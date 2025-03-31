@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # PHP Application Service
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    restart: unless-stopped
+    volumes:
+      - /sourceCode:/var/www/html
+    environment:
+      - "DB_HOST=mysql"
+      - "DB_DATABASE=laravel_db"
+      - "DB_USERNAME=laravel_user"
+      - "DB_PASSWORD=Pa$$word"
+    depends_on:
+      - mysql
+    networks:
+      - VMS_network
+
+  # Web Server (Nginx)
+  webserver:
+    image: nginx:latest
+    container_name: laravel_webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - /sourceCode:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - VMS_network
+
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: laravel_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: Pa$$word
+      MYSQL_ROOT_PASSWORD: root_Pa$$word
+    volumes:
+      - vms_mysql_data:/var/lib/mysql
+    networks:
+      - VMS_network
+
+  # PHPMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: laravel_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root_Pa$$word
+    depends_on:
+      - mysql
+    networks:
+      - VMS_network
+
+networks:
+  VMS_network:
+    driver: bridge
+
+volumes:
+  vms_mysql_data:
