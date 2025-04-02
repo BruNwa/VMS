@@ -1,7 +1,17 @@
 #!/bin/bash
 set -e #stop execution if any command fails
 
-mkdir -p /var/www/html/uploads
+
+#Creation of the Uploads folder&subf
+mkdir /var/www/html/uploads
+mkdir /var/www/html/uploads/default
+mkdir /var/www/html/uploads/landing_page_image
+mkdir /var/www/html/uploads/logo
+mkdir /var/www/html/uploads/meta
+mkdir /var/www/html/uploads/Photography
+mkdir /var/www/html/uploads/Service
+mkdir /var/www/html/uploads/theme_app
+mkdir /var/www/html/uploads/users-avatar
 
 # .env setup
 echo "APP_NAME=Laravel
@@ -107,13 +117,16 @@ php artisan make:model AddOn
 php artisan config:clear
 php artisan cache:clear
 
-#setting permissions
+#ssetting permissions
 echo "Ssetting permissions"
+chmod +x ./*
 chmod 777 storage
 chmod 777 storage/* 
 chmod 777 bootstrap/* 
 chmod 777 resources/* 
 chmod 777 uploads
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 
 echo "the application setup complete"
 
