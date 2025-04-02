@@ -119,11 +119,11 @@ php artisan cache:clear
 
 #ssetting permissions
 echo "Ssetting permissions"
-chmod 777 storage
-chmod 777 storage/* 
-chmod 777 bootstrap/* 
-chmod 777 resources/* 
-chmod 777 uploads
+chmod 777 /var/www/html/storage
+chmod 777 /var/www/html/storage/* 
+chmod 777 /var/www/html/bootstrap/* 
+chmod 777 /var/www/html/resources/* 
+chmod 777 /var/www/html/uploads
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 
