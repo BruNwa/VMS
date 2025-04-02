@@ -119,7 +119,6 @@ php artisan cache:clear
 
 #ssetting permissions
 echo "Ssetting permissions"
-chmod +x ./*
 chmod 777 storage
 chmod 777 storage/* 
 chmod 777 bootstrap/* 

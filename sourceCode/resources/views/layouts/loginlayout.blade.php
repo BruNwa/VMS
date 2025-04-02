@@ -15,24 +15,24 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $rtl == 'on'?'rtl':''}}">
 <head>
 
-    <title>@yield('page-title') | {{ isset($company_settings['title_text']) ? $company_settings['title_text'] : (isset($admin_settings['title_text']) ? $admin_settings['title_text'] :'BookingGo') }}</title>
+    <title>@yield('page-title') | {{ isset($company_settings['title_text']) ? $company_settings['title_text'] : (isset($admin_settings['title_text']) ? $admin_settings['title_text'] :'BruNwa') }}</title>
 
-    <meta name="title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BookingGo SaaS' }}">
+    <meta name="title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BruNwa SaaS' }}">
     <meta name="keywords" content="{{ isset($admin_settings['meta_keywords']) ? $admin_settings['meta_keywords'] : 'Multi Business Appointment Booking and Scheduling' }}">
-    <meta name="description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BookingGo, a user-friendly web application by Rajodiya Apps.'}}">
+    <meta name="description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BruNwa, a user-friendly web application by Rajodiya Apps.'}}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ env('APP_URL') }}">
-    <meta property="og:title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BookingGo SaaS' }}">
-    <meta property="og:description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BookingGo, a user-friendly web application by Rajodiya Apps.'}} ">
+    <meta property="og:title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BruNwa SaaS' }}">
+    <meta property="og:description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BruNwa, a user-friendly web application by Rajodiya Apps.'}} ">
     <meta property="og:image" content="{{ get_file( (isset($admin_settings['meta_image'])) ? (check_file($admin_settings['meta_image'])) ?  $admin_settings['meta_image'] : 'uploads/meta/meta_image.png' : 'uploads/meta/meta_image.png'  ) }}{{'?'.time() }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ env('APP_URL') }}">
-    <meta property="twitter:title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BookingGo SaaS' }}">
-    <meta property="twitter:description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BookingGo, a user-friendly web application by Rajodiya Apps.'}} ">
+    <meta property="twitter:title" content="{{ isset($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'BruNwa SaaS' }}">
+    <meta property="twitter:description" content="{{ isset($admin_settings['meta_description']) ? $admin_settings['meta_description'] : 'Discover the efficiency of BruNwa, a user-friendly web application by Rajodiya Apps.'}} ">
     <meta property="twitter:image" content="{{ get_file( (isset($admin_settings['meta_image'])) ? (check_file($admin_settings['meta_image'])) ?  $admin_settings['meta_image'] : 'uploads/meta/meta_image.png' : 'uploads/meta/meta_image.png'  ) }}{{'?'.time() }}">
 
     <meta name="author" content="{{  env('APP_NAME')  }}">
@@ -100,7 +100,7 @@
                                 }
                             }
                         @endphp
-                        <img src="{{ $logo }}{{'?'.time()}}" alt="{{ config('app.name', 'BookingGo') }}" class="navbar-brand-img auth-navbar-brand">
+                        <img src="{{ $logo }}{{'?'.time()}}" alt="{{ config('app.name', 'BruNwa') }}" class="navbar-brand-img auth-navbar-brand">
                     </a>
                     <div class="lang-dropdown-only-mobile ">
                         @yield('language-bar')
@@ -129,7 +129,7 @@
             @yield('content')
             <div class="auth-footer">
                 <div class="container-fluid">
-                    <p class="">@if (isset($company_settings['footer_text'])) {{$company_settings['footer_text']}} @elseif (isset($admin_settings['footer_text'])) {{ $admin_settings['footer_text'] }} @else{{__('Copyright')}} &copy; {{ config('app.name', 'BookingGo') }}@endif{{date('Y')}}</p>
+                    <p class="">@if (isset($company_settings['footer_text'])) {{$company_settings['footer_text']}} @elseif (isset($admin_settings['footer_text'])) {{ $admin_settings['footer_text'] }} @else{{__('Copyright')}} &copy; {{ config('app.name', 'BruNwa') }}@endif{{date('Y')}}</p>
                 </div>
             </div>
         </div>

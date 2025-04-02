@@ -52,8 +52,8 @@
 @section('content')
     <div class="pt-3 page-header">
         <div class="page-block">
-            <div class="row mt-md-4 row-gaps align-items-center bookinggo-dash-row manage-business-sec">
-                <div class="col-xl-2 col-md-3 bookinggo-row-inner">
+            <div class="row mt-md-4 row-gaps align-items-center BruNwa-dash-row manage-business-sec">
+                <div class="col-xl-2 col-md-3 BruNwa-row-inner">
                     <div class="dropdown dash-h-item drp-language">
                         <a class="dash-head-link dropdown-toggle arrow-none m-0 cust-btn" data-bs-toggle="dropdown"
                             href="#" role="button" aria-haspopup="false" aria-expanded="false"

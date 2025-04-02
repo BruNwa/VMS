@@ -12,22 +12,22 @@
 <html lang="en">
 
 <head>
-    <title>@yield('page-title') | {{ !empty(admin_setting('title_text')) ? admin_setting('title_text') : 'BookingGo' }}
+    <title>@yield('page-title') | {{ !empty(admin_setting('title_text')) ? admin_setting('title_text') : 'BruNwa' }}
     </title>
 
-    <meta name="title" content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BookingGo' }}">
+    <meta name="title" content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BruNwa' }}">
     <meta name="keywords"
-        content="{{ !empty(admin_setting('meta_keywords')) ? admin_setting('meta_keywords') : 'BookingGo,SaaS solution,Multi-Business' }}">
+        content="{{ !empty(admin_setting('meta_keywords')) ? admin_setting('meta_keywords') : 'BruNwa,SaaS solution,Multi-Business' }}">
     <meta name="description"
-        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BookingGo, a user-friendly web application by WorkDo' }}">
+        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BruNwa, a user-friendly web application by WorkDo' }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ env('APP_URL') }}">
     <meta property="og:title"
-        content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BookingGo' }}">
+        content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BruNwa' }}">
     <meta property="og:description"
-        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BookingGo, a user-friendly web application by WorkDo' }} ">
+        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BruNwa, a user-friendly web application by WorkDo' }} ">
     <meta property="og:image"
         content="{{ get_file(!empty(admin_setting('meta_image')) ? (check_file(admin_setting('meta_image')) ? admin_setting('meta_image') : 'uploads/meta/meta_image.png') : 'uploads/meta/meta_image.png') }}{{ '?' . time() }}">
 
@@ -35,9 +35,9 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ env('APP_URL') }}">
     <meta property="twitter:title"
-        content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BookingGo' }}">
+        content="{{ !empty(admin_setting('meta_title')) ? admin_setting('meta_title') : 'BruNwa' }}">
     <meta property="twitter:description"
-        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BookingGo, a user-friendly web application by WorkDo' }} ">
+        content="{{ !empty(admin_setting('meta_description')) ? admin_setting('meta_description') : 'Discover the efficiency of BruNwa, a user-friendly web application by WorkDo' }} ">
     <meta property="twitter:image"
         content="{{ get_file(!empty(admin_setting('meta_image')) ? (check_file(admin_setting('meta_image')) ? admin_setting('meta_image') : 'uploads/meta/meta_image.png') : 'uploads/meta/meta_image.png') }}{{ '?' . time() }}">
 

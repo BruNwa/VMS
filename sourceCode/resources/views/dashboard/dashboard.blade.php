@@ -207,7 +207,7 @@
             </div>
     </div>
 </div>
-<div class="row bookinggo-raw">
+<div class="row BruNwa-raw">
     <div class="col-12">
         <h4 class="h4 font-weight-400 mb-3">{{ __('Recent Order') }}</h4>
         <div class="card">

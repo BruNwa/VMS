@@ -25,18 +25,18 @@ class MarketPlaceSeederTableSeeder extends Seeder
         $data['product_main_description'] = '<p>Go beyond static galleries. This theme allows you to curate your photographic journey. Organize high-resolution images by themes, projects, or even chronological order to tell a visual story. Do not just display photos; showcase them in stunning slideshows with captivating captions that delve into your creative process. This allows potential clients to not only see your technical skills but also understand the emotions and experiences you strive to capture in your work.</p>';
         $data['product_main_demo_link'] = '#';
         $data['product_main_demo_button_text'] = 'View Live Demo';
-        $data['dedicated_theme_heading'] = 'The BookingGo Photography Theme A Deep Dive';
-        $data['dedicated_theme_description'] = '<p>The BookingGo Photography Theme is more than just a pretty face for your online presence. It is a comprehensive toolbox designed to empower you, the photographer, to not only showcase your work in a stunning and captivating way but also to streamline your entire workflow and connect with clients seamlessly.</p>';
+        $data['dedicated_theme_heading'] = 'The BruNwa Photography Theme A Deep Dive';
+        $data['dedicated_theme_description'] = '<p>The BruNwa Photography Theme is more than just a pretty face for your online presence. It is a comprehensive toolbox designed to empower you, the photographer, to not only showcase your work in a stunning and captivating way but also to streamline your entire workflow and connect with clients seamlessly.</p>';
         $data['dedicated_theme_sections'] = '[
             { 
                 "dedicated_theme_section_image":"",
                 "dedicated_theme_section_heading":"Transforming Browsers into Engaged Clients",
-                "dedicated_theme_section_description":"<p>This theme goes beyond aesthetics. It fosters engagement and interaction with potential clients.  Strategically placed calls to action, like Book Now buttons and contact forms, make it easy for visitors to connect with you for inquiries and schedule sessions directly through BookingGo intuitive scheduling system.  Furthermore, you can showcase special packages and promotions directly within your galleries, sparking interest and driving potential clients to take the next step.<\/p>",
+                "dedicated_theme_section_description":"<p>This theme goes beyond aesthetics. It fosters engagement and interaction with potential clients.  Strategically placed calls to action, like Book Now buttons and contact forms, make it easy for visitors to connect with you for inquiries and schedule sessions directly through BruNwa intuitive scheduling system.  Furthermore, you can showcase special packages and promotions directly within your galleries, sparking interest and driving potential clients to take the next step.<\/p>",
                 "dedicated_theme_section_cards":{"1":{"title":null,"description":null}}
             },
             {"dedicated_theme_section_image":"",
                 "dedicated_theme_section_heading":"Effortless Booking Management & Client Communication",
-                "dedicated_theme_section_description":"<p>BookingGo streamlines your booking process, freeing you up to focus on what you do best capturing stunning photographs.  Clients can book sessions directly through your BookingGo powered website, eliminating the need for back-and-forth emails and phone calls. The platform also facilitates two way communication, allowing you to answer client questions, discuss details, and prepare for the shoot  all within a centralized and organized space. This not only saves you time but also ensures a smooth and efficient experience for both you and your clients.<\/p>",
+                "dedicated_theme_section_description":"<p>BruNwa streamlines your booking process, freeing you up to focus on what you do best capturing stunning photographs.  Clients can book sessions directly through your BruNwa powered website, eliminating the need for back-and-forth emails and phone calls. The platform also facilitates two way communication, allowing you to answer client questions, discuss details, and prepare for the shoot  all within a centralized and organized space. This not only saves you time but also ensures a smooth and efficient experience for both you and your clients.<\/p>",
                 "dedicated_theme_section_cards":{"1":{"title":null,"description":null}}
             },
             {"dedicated_theme_section_image":"",
@@ -48,11 +48,11 @@ class MarketPlaceSeederTableSeeder extends Seeder
         $data['dedicated_theme_sections_heading'] = '';
         $data['screenshots'] = '[{"screenshots":"","screenshots_heading":"Photography"},{"screenshots":"","screenshots_heading":"Photography"},{"screenshots":"","screenshots_heading":"Photography"},{"screenshots":"","screenshots_heading":"Photography"},{"screenshots":"","screenshots_heading":"Photography"}]';
         $data['addon_heading'] = 'Why choose dedicated modules for Your Business?';
-        $data['addon_description'] = '<p>With BookingGo, you can conveniently manage all your business functions from a single location.</p>';
+        $data['addon_description'] = '<p>With BruNwa, you can conveniently manage all your business functions from a single location.</p>';
         $data['addon_section_status'] = 'on';
         $data['whychoose_heading'] = 'Why choose dedicated modules for Your Business?';
-        $data['whychoose_description'] = '<p>With BookingGO, you can conveniently manage all your business functions from a single location.</p>';
-        $data['pricing_plan_heading'] = 'Empower Your Workforce with BookingGo';
+        $data['whychoose_description'] = '<p>With BruNwa, you can conveniently manage all your business functions from a single location.</p>';
+        $data['pricing_plan_heading'] = 'Empower Your Workforce with BruNwa';
         $data['pricing_plan_description'] = '<p>Access over Premium Add-ons for Stripe, Paypal, Google Recaptcha and more, all in one place!</p>';
         $data['pricing_plan_demo_link'] = '#';
         $data['pricing_plan_demo_button_text'] = 'View Live Demo';

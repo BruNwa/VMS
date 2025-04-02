@@ -102,17 +102,17 @@ div.dataTables_wrapper div.dataTables_length select {
         padding-left: 10px !important;
     }
     /* 18-11-2024 */
-    .bookinggo-card-wrapper .dashboard-card .card-inner .card-icon svg{
+    .BruNwa-card-wrapper .dashboard-card .card-inner .card-icon svg{
         width: 50px;
         height: 50px;
     }
-    .bookinggo-card-wrapper .dashboard-card .card-inner{
+    .BruNwa-card-wrapper .dashboard-card .card-inner{
         padding: 15px;
     }
-    .bookinggo-card-wrapper .qr-card-inner .shareqrcode{
+    .BruNwa-card-wrapper .qr-card-inner .shareqrcode{
         max-width: 70%;
     }
-    .bookinggo-card-wrapper .qr-card-inner .shareqrcode svg{
+    .BruNwa-card-wrapper .qr-card-inner .shareqrcode svg{
         width: 100%;
         height: 100% ;
     }
@@ -151,7 +151,7 @@ div.dataTables_wrapper div.dataTables_length select {
         justify-content: center;
     }
     /* 18-11-2024 */
-    .bookinggo-card-wrapper .qr-card{
+    .BruNwa-card-wrapper .qr-card{
         max-width: 100%;
     }
 }

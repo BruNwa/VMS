@@ -1931,7 +1931,7 @@
             }
         }
 
-        .dash-container .bookinggo-raw {
+        .dash-container .BruNwa-raw {
             padding-top: 0 !important;
         }
 
@@ -2114,14 +2114,14 @@
         }
 
         /* bussiness form edit css end */
-        /* ---- bookinggo dashbord dropdown css -----*/
+        /* ---- BruNwa dashbord dropdown css -----*/
 
-        .bookinggo-dash-row .bookinggo-row-inner {
+        .BruNwa-dash-row .BruNwa-row-inner {
             align-items: center;
             gap: 10px;
         }
 
-        .bookinggo-row-inner .dash-head-link.dropdown-toggle {
+        .BruNwa-row-inner .dash-head-link.dropdown-toggle {
             color: #525b69;
             display: inline-flex;
             align-items: center;
@@ -2140,19 +2140,19 @@
             -o-border-radius: 10px;
 }
 
-        .bookinggo-row-inner .dash-head-link.dropdown-toggle i.ti-apps {
+        .BruNwa-row-inner .dash-head-link.dropdown-toggle i.ti-apps {
             color: #0CAF60;
             font-size: 20px;
         }
 
-        .bookinggo-row-inner .dash-head-link.dropdown-toggle i.drp-arrow {
+        .BruNwa-row-inner .dash-head-link.dropdown-toggle i.drp-arrow {
             /* color: #525b69; */
             font-size: 14px;
             margin-left: 5px;
             opacity: 0.8;
         }
 
-        /* ---- bookinggo dashbord dropdown css end -----*/
+        /* ---- BruNwa dashbord dropdown css end -----*/
         /* ---manage appointment section strat ---- */
 
         .appointment-tab-content .row .card {
@@ -2164,7 +2164,7 @@
             row-gap: 25px;
         }
 
-        .bookinggo-row-inner .dropdown-menu {
+        .BruNwa-row-inner .dropdown-menu {
             left: 6px !important;
             top: 100% !important;
             width: 100%;
@@ -2172,13 +2172,13 @@
             background-color: #fff;
         }
 
-        .bookinggo-row-inner .dropdown-toggle,
-        .bookinggo-row-inner .drp-language .dropdown-item {
+        .BruNwa-row-inner .dropdown-toggle,
+        .BruNwa-row-inner .drp-language .dropdown-item {
             white-space: normal;
             word-break: break-word;
         }
 
-        .bookinggo-row-inner .dropdown-toggle span {
+        .BruNwa-row-inner .dropdown-toggle span {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -2199,18 +2199,18 @@
             border-radius: 7px;
         }
 
-        .bookinggo-row-inner .dropdown-menu::-webkit-scrollbar,
+        .BruNwa-row-inner .dropdown-menu::-webkit-scrollbar,
         .dash-header .dash-h-dropdown #business-list::-webkit-scrollbar,
         .fc-daygrid::-webkit-scrollbar {
             width: 5px;
             height: 5px;
         }
 
-        .bookinggo-row-inner .dropdown-menu::-webkit-scrollbar-track {
+        .BruNwa-row-inner .dropdown-menu::-webkit-scrollbar-track {
             background-color: white;
         }
 
-        .bookinggo-row-inner .dropdown-menu::-webkit-scrollbar-thumb,
+        .BruNwa-row-inner .dropdown-menu::-webkit-scrollbar-thumb,
         .dash-header .dash-h-dropdown #business-list::-webkit-scrollbar-thumb,
         .fc-daygrid::-webkit-scrollbar-thumb {
             background-color: #a9b5e6;
@@ -2248,7 +2248,7 @@
         /* ---business card end ---- */
         /* ---social sharing start ---- */
 
-        .bookinggo-raw .stats-wrapper.info-card .card-body.stats {
+        .BruNwa-raw .stats-wrapper.info-card .card-body.stats {
             text-align: center;
         }
 
@@ -3342,7 +3342,7 @@
 
         /* button color End*/
         /****Design issue fix &  rtl issue start ******/
-        .bookinggo-card .row {
+        .BruNwa-card .row {
             row-gap: 20px;
         }
 
@@ -3551,18 +3551,18 @@
         /* 18-11-2024 */
 
         @media only screen and (min-width: 1700px) {
-            .bookinggo-main-row #sharingButtonsContainer {
+            .BruNwa-main-row #sharingButtonsContainer {
                 top: 85%;
             }
         }
 
-        .bookinggo-main-row #sharingButtonsContainer {
+        .BruNwa-main-row #sharingButtonsContainer {
             top: 90%;
             left: 20px;
         }
 
         @media only screen and (max-width: 575px) {
-            .bookinggo-main-row #sharingButtonsContainer {
+            .BruNwa-main-row #sharingButtonsContainer {
                 top: 95%;
                 transform: unset;
                 width: 100%;
@@ -4413,7 +4413,7 @@ ul.dt-button-collection.dropdown-menu li {
 .appointment-date .date-box .form-control{
     height: 35px;
 }
-.page-header:has(+ .overview-bookinggo-row) {
+.page-header:has(+ .overview-BruNwa-row) {
     display: none !important;
 }
 .appointment-calendar-list .event-cards {
@@ -4519,7 +4519,7 @@ a .ti-file-invoice{
     margin-top: 0 !important;
 }
 
-.overview-bookinggo-row .service-tbl-img{
+.overview-BruNwa-row .service-tbl-img{
     flex-shrink: 0;
 }
 .business-card-wrp{
@@ -5070,11 +5070,11 @@ body.theme-10 .empty-appointment-image svg path.theme-color{
     max-width: calc(50% - 15px);
     width: 100%;
 }
-.bookinggo-raw .fc .fc-toolbar .fc-toolbar-chunk.fc-toolbar-chunk,
+.BruNwa-raw .fc .fc-toolbar .fc-toolbar-chunk.fc-toolbar-chunk,
 .business-hrs .fc .fc-toolbar .fc-toolbar-chunk.fc-toolbar-chunk{
     margin-top: 0;
 }
-.bookinggo-raw .fc .fc-toolbar.fc-header-toolbar,
+.BruNwa-raw .fc .fc-toolbar.fc-header-toolbar,
 .business-hrs .fc .fc-toolbar.fc-header-toolbar{
     margin: 10px 0;
 }
@@ -5135,13 +5135,13 @@ body.theme-10 .empty-appointment-image svg path.theme-color{
         padding: 0 !important;
     }
     .analytics-dropdown .dropdown-toggle,
-    .bookinggo-card .btn.btn-primary{
+    .BruNwa-card .btn.btn-primary{
         padding: 7px 10px;
     }
-    .bookinggo-row-inner .dash-head-link.dropdown-toggle{
+    .BruNwa-row-inner .dash-head-link.dropdown-toggle{
         font-size: 12px;
     }
-    .bookinggo-row-inner .dash-head-link.dropdown-toggle i.ti-apps{
+    .BruNwa-row-inner .dash-head-link.dropdown-toggle i.ti-apps{
         font-size: 16px;
     }
     .blog-testi-card .card{

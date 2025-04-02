@@ -161,8 +161,8 @@ class DefultSetting extends Seeder
             "defult_currancy_symbol" => "$",
             "defult_language" => "en",
             "defult_timezone" => "Asia/Kolkata",
-            "title_text" => !empty(env('APP_NAME')) ? env('APP_NAME') : 'BookingGo',
-            "footer_text" => "Copyright © " . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'BookingGo'),
+            "title_text" => !empty(env('APP_NAME')) ? env('APP_NAME') : 'BruNwa',
+            "footer_text" => "Copyright © " . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'BruNwa'),
             "landing_page" => "off",
             "site_rtl" => "off",
             "cust_darklayout" => "off",
@@ -171,9 +171,9 @@ class DefultSetting extends Seeder
             "color" => "theme-1",
 
             //seo
-            "meta_title" => "BookingGo SaaS - Multi Business Appointment Booking and Scheduling",
-            "meta_keywords" => "BookingGo,SaaS solution,Multi-business functionality, Cloud-based access,Scalability,Multi-addons,Collaboration tool,Data management,Business productivity,Operational effectiveness",
-            "meta_description" => "Discover the efficiency of BookingGo, a user-friendly web application by Rajodiya Apps. Streamline project management, organize tasks, collaborate seamlessly, and track progress effortlessly. Boost productivity with BookingGo's intuitive interface and comprehensive features. Revolutionize your project management process today. Try BookingGo!",
+            "meta_title" => "BruNwa SaaS - Multi Business Appointment Booking and Scheduling",
+            "meta_keywords" => "BruNwa,SaaS solution,Multi-business functionality, Cloud-based access,Scalability,Multi-addons,Collaboration tool,Data management,Business productivity,Operational effectiveness",
+            "meta_description" => "Discover the efficiency of BruNwa, a user-friendly web application by Rajodiya Apps. Streamline project management, organize tasks, collaborate seamlessly, and track progress effortlessly. Boost productivity with BruNwa's intuitive interface and comprehensive features. Revolutionize your project management process today. Try BruNwa!",
 
             // for cookie
             'enable_cookie' => 'on',

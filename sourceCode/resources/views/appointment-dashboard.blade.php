@@ -33,7 +33,7 @@
     {{ Form::close() }}
 @endsection
 @section('content')
-    <div class="row bookinggo-raw mt-3">
+    <div class="row BruNwa-raw mt-3">
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-12">

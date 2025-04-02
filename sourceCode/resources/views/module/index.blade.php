@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-xxl-4 col-md-6 col-12">
                         <div class="add-on-banner-content text-center ">
-                            <a href="https://workdo.io/product-category/bookinggo-saas-addon/bookinggo-theme/?utm_source=main&utm_medium=bookinggo&utm_campaign=btn" class="btn btn-light mb-md-3 mb-2">
+                            <a href="https://workdo.io/product-category/BruNwa-saas-addon/BruNwa-theme/?utm_source=main&utm_medium=BruNwa&utm_campaign=btn" class="btn btn-light mb-md-3 mb-2">
                                 <img src="https://workdo.io/wp-content/uploads/2023/03/favicon.jpg" alt="">
                                 <span>{{ __('Click Here') }}</span>
                             </a>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-xxl-4 col-12">
                         <div class="add-on-btn d-flex flex-wrap align-items-center justify-content-xxl-end justify-content-center gap-2">
-                              <a class="btn btn-primary" href="https://workdo.io/product-category/bookinggo-saas-addon/bookinggo-theme/?utm_source=main&utm_medium=bookinggo&utm_campaign=btn" target="new">
+                              <a class="btn btn-primary" href="https://workdo.io/product-category/BruNwa-saas-addon/BruNwa-theme/?utm_source=main&utm_medium=BruNwa&utm_campaign=btn" target="new">
                                 {{ __('Buy More Add-on') }}
                               </a>
                         </div>

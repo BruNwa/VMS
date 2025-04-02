@@ -120,13 +120,13 @@
         <div class="container">
             <div class="section-title text-center">
                 <h2>{{__('Why choose dedicated modules')}}<b>{{__('for Your Business?')}}</b></h2>
-                <p>{{__('With BookingGo, you can conveniently manage all your business functions from a single location.')}}</p>
+                <p>{{__('With BruNwa, you can conveniently manage all your business functions from a single location.')}}</p>
             </div>
             <div class="pricing-area">
                 <div class="row row-gap">
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="section-title">
-                            <h2>{{__('Empower Your Workforce with BookingGo')}}</h2>
+                            <h2>{{__('Empower Your Workforce with BruNwa')}}</h2>
                             <p>{{__('Access over Premium Add-ons for Stripe , Paypal , Google Recaptcha, and more, all in one place!')}}</p>
                         </div>
                         <ul class="variable-list">
@@ -310,7 +310,7 @@
         <div class="container">
             <div class="section-title text-center">
                 <h2>{{__('Why choose dedicated modulesfor Your Business?')}}</b></h2>
-                <p>{{__('With BookingGo, you can conveniently manage all your business functions from a single location.')}}</p>
+                <p>{{__('With BruNwa, you can conveniently manage all your business functions from a single location.')}}</p>
             </div>
             @if (count($modules) > 0)
                 <div class="row product-row">

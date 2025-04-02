@@ -25,7 +25,7 @@ class ModuleController extends Controller
         if (Auth::user()->isAbleTo('module manage')) {
             try {
                 $modules = Module::allModules();
-                $addons = json_decode(file_get_contents('https://bookinggo-demo.workdo.io/cronjob/booking_addon.json', true));
+                $addons = json_decode(file_get_contents('https://BruNwa-demo.workdo.io/cronjob/booking_addon.json', true));
 
                 $path = base_path('packages/workdo');
                 $devPackagePath = \Illuminate\Support\Facades\File::directories($path);
@@ -229,7 +229,7 @@ class ModuleController extends Controller
     //                 return error_res('Invalid JSON format in module.json.');
     //             }
     //             $addon_product = isset($jsonData['product']) ? $jsonData['product'] : null;
-    //             if ($addon_product == 'BookingGo SaaS') {
+    //             if ($addon_product == 'BruNwa SaaS') {
     //                 $zip->extractTo('Modules/');
     //                 $zip->close();
     //                 return success_res('Install successfully.');

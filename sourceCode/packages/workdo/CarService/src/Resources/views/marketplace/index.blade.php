@@ -16,7 +16,7 @@
                             <div class="section-title">
                                 <h2>{{ $module->alias }}</h2>
                             </div>
-                            <p>{{ __('This theme prioritizes your clients experience.  Imagine them effortlessly booking appointments directly through your BookingGo page, selecting their date, time, and the specific service needed (oil change, tire rotation, diagnostics, etc.) with just a few clicks. The platform also facilitates clear communication. You can answer client questions, confirm details, and even send automated appointment reminders – all within a centralized and organized platform. This eliminates confusion and ensures a smooth experience for your customers, leaving them feeling valued and informed.') }}
+                            <p>{{ __('This theme prioritizes your clients experience.  Imagine them effortlessly booking appointments directly through your BruNwa page, selecting their date, time, and the specific service needed (oil change, tire rotation, diagnostics, etc.) with just a few clicks. The platform also facilitates clear communication. You can answer client questions, confirm details, and even send automated appointment reminders – all within a centralized and organized platform. This eliminates confusion and ensures a smooth experience for your customers, leaving them feeling valued and informed.') }}
                             </p>
                             <div class="price">
                                 <ins><span
@@ -79,9 +79,9 @@
         <section class="dedicated-themes-section padding-bottom">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>{{ __('BookingGo ') }}<b>{{ __(' Car Services Theme') }}</b>{{ __('Empowers Your Business') }}
+                    <h2>{{ __('BruNwa ') }}<b>{{ __(' Car Services Theme') }}</b>{{ __('Empowers Your Business') }}
                     </h2>
-                    <p>{{ __('Running a car service business should not feel like navigating a stormy sea. BookingGo  Car Services Theme is your trusty captain, offering a user-friendly online platform that streamlines your workflow, builds trust with clients, and frees you up to focus on smooth sailing – delivering exceptional service') }}
+                    <p>{{ __('Running a car service business should not feel like navigating a stormy sea. BruNwa  Car Services Theme is your trusty captain, offering a user-friendly online platform that streamlines your workflow, builds trust with clients, and frees you up to focus on smooth sailing – delivering exceptional service') }}
                     </p>
                 </div>
                 <div class="row row-gap padding-bottom ">
@@ -93,7 +93,7 @@
                                 </div>
                                 <h2>{{ __('Transparency Builds Trustworthy Relationships') }}</h2>
                             </div>
-                            <p>{{ __('BookingGo  Car Services Theme is your compass, guiding you towards building trust and establishing your expertise.  Customize your page with your company logo, brand colors, and high-quality photos showcasing your clean, well-equipped workshop and your friendly team. This personalized touch fosters trust with potential clients, demonstrating professionalism and a commitment to quality service.  Additionally, dedicate a section to clearly explain your service offerings. Outline service packages with detailed descriptions and transparent pricing structures. This allows clients to make informed decisions and choose the service that best suits their needs and budget, eliminating any surprises or hidden fees.') }}
+                            <p>{{ __('BruNwa  Car Services Theme is your compass, guiding you towards building trust and establishing your expertise.  Customize your page with your company logo, brand colors, and high-quality photos showcasing your clean, well-equipped workshop and your friendly team. This personalized touch fosters trust with potential clients, demonstrating professionalism and a commitment to quality service.  Additionally, dedicate a section to clearly explain your service offerings. Outline service packages with detailed descriptions and transparent pricing structures. This allows clients to make informed decisions and choose the service that best suits their needs and budget, eliminating any surprises or hidden fees.') }}
                             </p>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                                 </div>
                                 <h2>{{ __('Focus on Your Expertise, Not Marketing Maneuvers') }}</h2>
                             </div>
-                            <p>{{ __('With BookingGo, you can spend less time on marketing gymnastics and more time focusing on what you do best – providing top-notch car service. The theme allows for effortless promotion through seamless integration with social media platforms. You can easily share special promotions and showcase your expertise through service-specific posts. Furthermore, integrate a testimonial section where satisfied clients can sing your praises. These positive reviews act as powerful social proof, attracting new customers and reaffirming your reputation for excellent service.') }}
+                            <p>{{ __('With BruNwa, you can spend less time on marketing gymnastics and more time focusing on what you do best – providing top-notch car service. The theme allows for effortless promotion through seamless integration with social media platforms. You can easily share special promotions and showcase your expertise through service-specific posts. Furthermore, integrate a testimonial section where satisfied clients can sing your praises. These positive reviews act as powerful social proof, attracting new customers and reaffirming your reputation for excellent service.') }}
                             </p>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                                 </div>
                                 <h2>{{ __('Streamlined Operations for a Well-Oiled Machine') }}</h2>
                             </div>
-                            <p>{{ __('BookingGo  Car Services Theme goes beyond just scheduling. It seamlessly integrates with existing appointment management and invoicing software, eliminating the need for manual data entry. This reduces the risk of errors and saves you valuable time, allowing you to focus on serving your clients. Additionally, the platform enables online payment options, offering your clients a secure and convenient way to settle their bills. This streamlines the entire process, freeing you and your staff to focus on what matters most – providing exceptional car service.') }}
+                            <p>{{ __('BruNwa  Car Services Theme goes beyond just scheduling. It seamlessly integrates with existing appointment management and invoicing software, eliminating the need for manual data entry. This reduces the risk of errors and saves you valuable time, allowing you to focus on serving your clients. Additionally, the platform enables online payment options, offering your clients a secure and convenient way to settle their bills. This streamlines the entire process, freeing you and your staff to focus on what matters most – providing exceptional car service.') }}
                             </p>
                         </div>
                     </div>
@@ -147,14 +147,14 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h2>{{ __('Why choose dedicated modules for') }} <b>{{ __('Your Business?') }}</b></h2>
-                    <p>{{ __('With BookingGo, you can conveniently manage all your business functions from a single location.') }}
+                    <p>{{ __('With BruNwa, you can conveniently manage all your business functions from a single location.') }}
                     </p>
                 </div>
                 <div class="pricing-area">
                     <div class="row row-gap">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="section-title">
-                                <h2>{{ __('Empower Your Workforce with BookingGo') }}</h2>
+                                <h2>{{ __('Empower Your Workforce with BruNwa') }}</h2>
                                 <p>{{ __('Access over Premium Add-ons for Stripe, Paypal, Google Recaptcha and more, all in one place!') }}
                                 </p>
 
@@ -340,7 +340,7 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h2>{{ __('Why choose dedicated modules for') }} <b>{{ __('Your Business?') }}</b></h2>
-                    <p>{{ __('With BookingGo, you can conveniently manage all your business functions from a single location.') }}
+                    <p>{{ __('With BruNwa, you can conveniently manage all your business functions from a single location.') }}
                     </p>
                 </div>
                 @if (count($modules) > 0)

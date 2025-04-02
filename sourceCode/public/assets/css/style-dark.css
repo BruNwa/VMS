@@ -30588,10 +30588,10 @@ body .table thead th {
 }
 
 /* 18-11-2024 */
-.bookinggo-infocard-wrapper .dashboard-project-card .card-content h3{
+.BruNwa-infocard-wrapper .dashboard-project-card .card-content h3{
     word-break: unset;
 }
-.bookinggo-main-row .app-table-wrp{
+.BruNwa-main-row .app-table-wrp{
     overflow-x: auto;
 }
 /* dashboard-card css  */
@@ -30650,7 +30650,7 @@ body .table thead th {
 .accordion.setting-accordion .accordion-header .accordion-button::after{
     filter: invert(1);
 }
-.bookinggo-raw .appoint-row .appoint-dash{
+.BruNwa-raw .appoint-row .appoint-dash{
     background: #292A33 !important;
 }
 .business-view-card.business-view .business-view-inner{

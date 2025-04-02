@@ -31,11 +31,11 @@ class MarketPlaceSeederTableSeeder extends Seeder
         $data['dedicated_theme_sections_heading'] = '';
         $data['screenshots'] = '[{"screenshots":"","screenshots_heading":"Paypal"},{"screenshots":"","screenshots_heading":"Paypal"},{"screenshots":"","screenshots_heading":"Paypal"}]';
         $data['addon_heading'] = '<h2>Why choose dedicated modules<b> for Your Business?</b></h2>';
-        $data['addon_description'] = '<p>with BookingGo, you can conveniently manage all your business functions from a single location.</p>';
+        $data['addon_description'] = '<p>with BruNwa, you can conveniently manage all your business functions from a single location.</p>';
         $data['addon_section_status'] = 'on';
         $data['whychoose_heading'] = 'Why choose dedicated modulesfor Your Business?';
-        $data['whychoose_description'] = '<p>with BookingGo, you can conveniently manage all your business functions from a single location.</p>';
-        $data['pricing_plan_heading'] = 'Empower Your Workforce with BookingGo';
+        $data['whychoose_description'] = '<p>with BruNwa, you can conveniently manage all your business functions from a single location.</p>';
+        $data['pricing_plan_heading'] = 'Empower Your Workforce with BruNwa';
         $data['pricing_plan_description'] = '<p>Access over Premium Add-ons for Stripe, Paypal, Google Recaptcha Communication, Management, and more, all in one place!</p>';
         $data['pricing_plan_demo_link'] = '#';
         $data['pricing_plan_demo_button_text'] = 'View Live Demo';

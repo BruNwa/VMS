@@ -7,7 +7,7 @@
                 current_lang: "en",
                 auto_language: null,
                 autorun: !0,
-                cookie_name: "bookinggo_cookie",
+                cookie_name: "BruNwa_cookie",
                 cookie_expiration: 182,
                 cookie_domain: window.location.hostname,
                 cookie_path: "/",

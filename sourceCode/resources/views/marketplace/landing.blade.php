@@ -12,7 +12,7 @@
                         <div class="banner-content">
                             <h1>{{ __('Empowering Businesses with Seamless Booking Management Solutions and Enhanced Customer Experiences.') }}
                             </h1>
-                            <p>{{ __('Simplify your booking processes with BookingGo SaaS, the ultimate solution for efficient and hassle-free booking management.') }}
+                            <p>{{ __('Simplify your booking processes with BruNwa SaaS, the ultimate solution for efficient and hassle-free booking management.') }}
                             </p>
                             <div class="btn-group">
                                 <a href="{{ route('apps.pricing') }}" class="btn">{{ __('Get the Package') }} <svg
@@ -119,7 +119,7 @@
                             </div>
                             <div class="support-content">
                                 <h3>{{ __('Streamlined ') }} <br> {{ __('Booking Management') }}</h3>
-                                <p>{{ __('BookingGo SaaS simplifies the booking process, allowing businesses to efficiently manage appointments, reservations, and schedules through intuitive tools, ultimately saving time and resources.') }}
+                                <p>{{ __('BruNwa SaaS simplifies the booking process, allowing businesses to efficiently manage appointments, reservations, and schedules through intuitive tools, ultimately saving time and resources.') }}
                                 </p>
                             </div>
                             <div class="support-content-bottom">
@@ -158,7 +158,7 @@
                             </div>
                             <div class="support-content">
                                 <h3>{{ __('Enhanced Customer Experience') }}</h3>
-                                <p>{{ __('With BookingGo SaaS, businesses can provide customers with a seamless booking experience, including easy online reservations, real-time availability updates, and personalized communication, leading to increased satisfaction and loyalty.
+                                <p>{{ __('With BruNwa SaaS, businesses can provide customers with a seamless booking experience, including easy online reservations, real-time availability updates, and personalized communication, leading to increased satisfaction and loyalty.
                                                                 ') }}
                                 </p>
                             </div>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="support-content">
                                 <h3>{{ __('Comprehensive') }} <br>{{ __('Business Insights') }}</h3>
-                                <p>{{ __('BookingGo SaaS offers advanced analytics and reporting features, providing businesses with valuable insights into booking trends, customer preferences, and performance metrics, enabling data-driven decision-making and strategic planning.') }}
+                                <p>{{ __('BruNwa SaaS offers advanced analytics and reporting features, providing businesses with valuable insights into booking trends, customer preferences, and performance metrics, enabling data-driven decision-making and strategic planning.') }}
                                 </p>
                             </div>
                             <div class="support-content-bottom">
@@ -236,7 +236,7 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h2> {{ __('Why choose dedicated modules') }} <b> {{ __('for Your Business?') }} </b></h2>
-                    <p> {{ __('With BookingGo Saas, you can conveniently manage all your business functions from a single location.') }}
+                    <p> {{ __('With BruNwa Saas, you can conveniently manage all your business functions from a single location.') }}
                     </p>
                 </div>
             </div>
@@ -621,11 +621,11 @@
                                     <div class="subtitle">
                                         {{ __('SALES') }}
                                     </div>
-                                    <h2>{{ __('Custom Status Module in BookingGo SaaS
+                                    <h2>{{ __('Custom Status Module in BruNwa SaaS
                                                                         ') }}
                                     </h2>
                                 </div>
-                                <p>{{ __('The Custom Status module within BookingGo SaaS offers administrators the ability to tailor appointment statuses to suit unique business workflows and requirements, providing enhanced clarity and efficiency in appointment management.
+                                <p>{{ __('The Custom Status module within BruNwa SaaS offers administrators the ability to tailor appointment statuses to suit unique business workflows and requirements, providing enhanced clarity and efficiency in appointment management.
                                                                 ') }}
                                 </p>
                                 <div class="theme-acnav">

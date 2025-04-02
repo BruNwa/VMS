@@ -3,10 +3,10 @@
     {{ __('Dashboard') }}
 @endsection
 @section('content')
-    <div class="row bookinggo-raw bookinggo-main-row overview-bookinggo-row">
+    <div class="row BruNwa-raw BruNwa-main-row overview-BruNwa-row">
         <div class="col-12">
-            <div class="row bookinggo-dash-row justify-content-between align-items-center">
-                <div class="d-flex bookinggo-row-inner col-md-10 mb-0">
+            <div class="row BruNwa-dash-row justify-content-between align-items-center">
+                <div class="d-flex BruNwa-row-inner col-md-10 mb-0">
                     <h5 class="h3 mb-0">{{ __('Dashboard') }}</h5>
                     <div class="dropdown dash-h-item drp-language">
                         <a class="dash-head-link dropdown-toggle arrow-none me-0 cust-btn" data-bs-toggle="dropdown"
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-wrap row-gap mb-4 mt-3 bookinggo-card-wrapper ">
+        <div class="d-flex flex-wrap row-gap mb-4 mt-3 BruNwa-card-wrapper ">
             <div class="col-12">
                 <div class="row row-gap">
                     <div class="col-xxl-10 col-md-9 col-sm-8 col-12">
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-wrap row-gap mb-1 mt-1 bookinggo-infocard-wrapper">
+        <div class="d-flex flex-wrap row-gap mb-1 mt-1 BruNwa-infocard-wrapper">
             <div class="col-12">
                 <div class="row dashboard-wrp">
                     <div class="col-sm-4 col-12">
@@ -460,7 +460,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 mb-4 bookinggo-card">
+        <div class="col-sm-12 mb-4 BruNwa-card">
             <div class="d-flex justify-content-between align-items-center mb-3 ">
                 <h5 class="m-0">{{ __('Latest Appointment') }}</h5>
                 <a class="btn btn-primary" href="{{ route('appointment.index') }}">{{ __('View All') }}</a>

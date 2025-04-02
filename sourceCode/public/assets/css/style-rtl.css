@@ -30387,10 +30387,10 @@ table.dataTable tbody > tr.selected th.select-checkbox:after {
 }
 
 /* 18-11-2024 */
-.bookinggo-infocard-wrapper .dashboard-project-card .card-content h3{
+.BruNwa-infocard-wrapper .dashboard-project-card .card-content h3{
     word-break: unset;
 }
-.bookinggo-main-row .app-table-wrp{
+.BruNwa-main-row .app-table-wrp{
     overflow-x: auto;
 }
 
@@ -30404,13 +30404,13 @@ table.dataTable tbody > tr.selected th.select-checkbox:after {
     color: var(--bs-white);
     text-transform: capitalize;
 }
-.bookinggo-main-row #sharingButtonsContainer{
+.BruNwa-main-row #sharingButtonsContainer{
 
     left: auto;
     right: 20px;
 }
 @media only screen and (max-width: 575px) {
-.bookinggo-main-row #sharingButtonsContainer{
+.BruNwa-main-row #sharingButtonsContainer{
     right: 0px;
 }
 }

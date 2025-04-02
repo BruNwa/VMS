@@ -79,8 +79,8 @@
         <section class="dedicated-themes-section padding-bottom">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>{{ __('The BookingGo ') }}<b>{{ __(' Photography Theme') }}</b>{{ __('A Deep Dive') }}</h2>
-                    <p>{{ __('The BookingGo Photography Theme is more than just a pretty face for your online presence. It is a comprehensive toolbox designed to empower you, the photographer, to not only showcase your work in a stunning and captivating way but also to streamline your entire workflow and connect with clients seamlessly. ') }}
+                    <h2>{{ __('The BruNwa ') }}<b>{{ __(' Photography Theme') }}</b>{{ __('A Deep Dive') }}</h2>
+                    <p>{{ __('The BruNwa Photography Theme is more than just a pretty face for your online presence. It is a comprehensive toolbox designed to empower you, the photographer, to not only showcase your work in a stunning and captivating way but also to streamline your entire workflow and connect with clients seamlessly. ') }}
                     </p>
                 </div>
                 <div class="row row-gap align-items-center padding-bottom">
@@ -92,7 +92,7 @@
                                 </div>
                                 <h2>{{ __('Transforming Browsers into Engaged Clients') }}</h2>
                             </div>
-                            <p>{{ __('This theme goes beyond aesthetics. It fosters engagement and interaction with potential clients.  Strategically placed calls to action, like Book Now buttons and contact forms, make it easy for visitors to connect with you for inquiries and schedule sessions directly through BookingGo intuitive scheduling system.  Furthermore, you can showcase special packages and promotions directly within your galleries, sparking interest and driving potential clients to take the next step.') }}
+                            <p>{{ __('This theme goes beyond aesthetics. It fosters engagement and interaction with potential clients.  Strategically placed calls to action, like Book Now buttons and contact forms, make it easy for visitors to connect with you for inquiries and schedule sessions directly through BruNwa intuitive scheduling system.  Furthermore, you can showcase special packages and promotions directly within your galleries, sparking interest and driving potential clients to take the next step.') }}
                             </p>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                                 </div>
                                 <h2>{{ __('Effortless Booking Management & Client Communication') }}</h2>
                             </div>
-                            <p>{{ __('BookingGo streamlines your booking process, freeing you up to focus on what you do best capturing stunning photographs.  Clients can book sessions directly through your BookingGo powered website, eliminating the need for back-and-forth emails and phone calls. The platform also facilitates two way communication, allowing you to answer client questions, discuss details, and prepare for the shoot  all within a centralized and organized space. This not only saves you time but also ensures a smooth and efficient experience for both you and your clients.') }}
+                            <p>{{ __('BruNwa streamlines your booking process, freeing you up to focus on what you do best capturing stunning photographs.  Clients can book sessions directly through your BruNwa powered website, eliminating the need for back-and-forth emails and phone calls. The platform also facilitates two way communication, allowing you to answer client questions, discuss details, and prepare for the shoot  all within a centralized and organized space. This not only saves you time but also ensures a smooth and efficient experience for both you and your clients.') }}
                             </p>
                         </div>
                     </div>
@@ -149,14 +149,14 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h2>{{ __('Why choose dedicated modules for') }} <b>{{ __('Your Business?') }}</b></h2>
-                    <p>{{ __('With BookingGo, you can conveniently manage all your business functions from a single location.') }}
+                    <p>{{ __('With BruNwa, you can conveniently manage all your business functions from a single location.') }}
                     </p>
                 </div>
                 <div class="pricing-area">
                     <div class="row row-gap">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="section-title">
-                                <h2>{{ __('Empower Your Workforce with BookingGo') }}</h2>
+                                <h2>{{ __('Empower Your Workforce with BruNwa') }}</h2>
                                 <p>{{ __('Access over Premium Add-ons for Stripe, Paypal, Google Recaptcha and more, all in one place!') }}
                                 </p>
 
@@ -342,7 +342,7 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h2>{{ __('Why choose dedicated modules for') }} <b>{{ __('Your Business?') }}</b></h2>
-                    <p>{{ __('With BookingGo, you can conveniently manage all your business functions from a single location.') }}</p>
+                    <p>{{ __('With BruNwa, you can conveniently manage all your business functions from a single location.') }}</p>
                 </div>
                 @if (count($modules) > 0)
                     <div class="row product-row">

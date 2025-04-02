@@ -1,11 +1,11 @@
 @extends('vendor.installer.layouts.master')
 
 @section('template_title')
-        {{ __('BookingGo SaaS') }}
+        {{ __('BruNwa SaaS') }}
 @endsection
 
 @section('title')
-    {{ __('BookingGo SaaS') }}
+    {{ __('BruNwa SaaS') }}
 @endsection
 
 @section('container')
