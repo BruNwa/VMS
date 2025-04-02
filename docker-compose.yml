@@ -12,7 +12,7 @@ services:
       - "DB_HOST=mysql"
       - "DB_DATABASE=laravel_db"
       - "DB_USERNAME=laravel_user"
-      - "DB_PASSWORD=Pa$$word"
+      - "DB_PASSWORD=Password"
       - "CIPHER=AES-256-CBC"
     depends_on:
       - mysql
@@ -42,8 +42,8 @@ services:
     environment:
       MYSQL_DATABASE: laravel_db
       MYSQL_USER: laravel_user
-      MYSQL_PASSWORD: Pa$$word
-      MYSQL_ROOT_PASSWORD: root_Pa$$word
+      MYSQL_PASSWORD: Password
+      MYSQL_ROOT_PASSWORD: root_Password
     volumes:
       - vms_mysql_data:/var/lib/mysql
     networks:
@@ -58,7 +58,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: root_Pa$$word
+      MYSQL_ROOT_PASSWORD: root_Password
     depends_on:
       - mysql
     networks:

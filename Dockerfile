@@ -15,13 +15,12 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-# Note: Ctype, Fileinfo, JSON, and OpenSSL are included in the base PHP image
+# Note: Ctype, Fileinfo, JSON, OpenSSL, and Tokenizer are included in the base PHP image
 RUN docker-php-ext-install \
     bcmath \
     mbstring \
     pdo \
     pdo_mysql \
-    tokenizer \
     xml
 
 # Get latest Composer
@@ -46,7 +45,7 @@ DB_HOST=mysql \n\
 DB_PORT=3306 \n\
 DB_DATABASE=laravel_db \n\
 DB_USERNAME=laravel_user \n\
-DB_PASSWORD=Pa\$\$word \n\
+DB_PASSWORD=Password \n\
 CIPHER=AES-256-CBC" > .env \n\
 fi \n\
 \n\
