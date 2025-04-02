@@ -42,8 +42,8 @@ RUN echo "open_basedir = none" > /usr/local/etc/php/conf.d/open_basedir.ini
 
 
 COPY appSetup.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
-    chmod +x /var/www/html/*
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh 
+RUN chmod +x /var/www/html/*
 
 
 EXPOSE 9000
