@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e #stop execution if any command fails
 
+mkdir -p /var/www/html/uploads
+
 # .env setup
 echo "APP_NAME=Laravel
 APP_ENV=local
