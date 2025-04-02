@@ -1,11 +1,11 @@
 @extends('vendor.installer.layouts.master')
 
 @section('template_title')
-    {{ trans('installer_messages.welcome.templateTitle') }}
+        {{ __('BookingGo SaaS') }}
 @endsection
 
 @section('title')
-    {{ trans('installer_messages.welcome.title') }}
+    {{ __('BookingGo SaaS') }}
 @endsection
 
 @section('container')

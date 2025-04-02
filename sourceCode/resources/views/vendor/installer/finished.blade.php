@@ -10,13 +10,21 @@
 @endsection
 
 @section('container')
-	<div>
-		<p><strong>Login information</strong></p>
-		<p><strong>Email : admin@example.com</strong></p>
-		<p><strong>Password : 123456</strong></p>
-	</div>
+    <p style="color:red;"><strong>Default Super Admin Created : superadmin@example.com / 1234</strong></p>
+    <p style="color:red;"><strong>Default Company Created : company@example.com / 1234</strong></p>
+
+
+    <p><strong><small>{{ trans('installer_messages.final.console') }}</small></strong></p>
+    <pre><code>{{ $finalMessages }}</code></pre>
+
+    <p><strong><small>{{ trans('installer_messages.final.log') }}</small></strong></p>
+    <pre><code>{{ $finalStatusMessage }}</code></pre>
+
+    <p><strong><small>{{ trans('installer_messages.final.env') }}</small></strong></p>
+    <pre><code>{{ $finalEnvFile }}</code></pre>
+
     <div class="buttons">
-        <a href="{{ url('/') }}" class="button">{{ trans('installer_messages.final.exit') }}</a>
+        <a href="{{ route('users.index') }}" class="button">{{ trans('installer_messages.final.exit') }}</a>
     </div>
 
 @endsection

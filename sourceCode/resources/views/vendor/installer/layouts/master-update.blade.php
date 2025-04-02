@@ -11,13 +11,15 @@
         <link href="{{ asset('installer/css/style.min.css') }}" rel="stylesheet"/>
         @yield('style')
         <script>
-            window.Laravel = '<?php echo json_encode([
+            window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-            ]); ?>';
+            ]); ?>
         </script>
     </head>
     <body>
         <div class="master">
+            <img src="{{ asset('installer/img/loading.gif') }}" class=" install-img" style="    width: 200px;height: 200px;">
+            <img src="{{ asset('installer/img/gear.svg') }}" class="install-gear-img">
             <div class="box">
                 <div class="header">
                     <h1 class="header__title">@yield('title')</h1>

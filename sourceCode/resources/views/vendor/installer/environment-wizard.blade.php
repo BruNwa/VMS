@@ -12,22 +12,14 @@
 @section('container')
     <div class="tabs tabs-full">
 
-        <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
-        <label for="tab1" class="tab-label">
-            <i class="fa fa-cog fa-2x fa-fw" aria-hidden="true"></i>
-            <br />
-            {{ trans('installer_messages.environment.wizard.tabs.environment') }}
-        </label>
 
-        <input id="tab2" type="radio" name="tabs" class="tab-input" />
-        <label for="tab2" class="tab-label">
-            <i class="fa fa-database fa-2x fa-fw" aria-hidden="true"></i>
-            <br />
-            {{ trans('installer_messages.environment.wizard.tabs.database') }}
-        </label>
-
-        <form method="post" action="{{ route('LaravelInstaller::environmentSaveWizard') }}" class="tabs-wrap">
-            <div class="tab" id="tab1content">
+        <form method="post" action="{{ route('LaravelInstaller::environmentSaveWizard') }}">
+            <label for="tab1" class="tab-label">
+                <i class="fa fa-cog fa-2x fa-fw" aria-hidden="true"></i>
+                <br />
+                {{ trans('installer_messages.environment.wizard.tabs.environment') }}
+            </label>
+            <div id="tab1content">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group {{ $errors->has('app_name') ? ' has-error ' : '' }}">
@@ -43,67 +35,9 @@
                     @endif
                 </div>
 
-                <div class="form-group {{ $errors->has('environment') ? ' has-error ' : '' }}">
-                    <label for="environment">
-                        {{ trans('installer_messages.environment.wizard.form.app_environment_label') }}
-                    </label>
-                    <select name="environment" id="environment">
-                        <option value="local">{{ trans('installer_messages.environment.wizard.form.app_environment_label_local') }}</option>
-                        <option value="development">{{ trans('installer_messages.environment.wizard.form.app_environment_label_developement') }}</option>
-                        <option value="qa">{{ trans('installer_messages.environment.wizard.form.app_environment_label_qa') }}</option>
-                        <option value="production" selected>{{ trans('installer_messages.environment.wizard.form.app_environment_label_production') }}</option>
-                        <option value="other">{{ trans('installer_messages.environment.wizard.form.app_environment_label_other') }}</option>
-                    </select>
-                        <input type="hidden" name="environment_custom" id="environment_custom" placeholder="{{ trans('installer_messages.environment.wizard.form.app_environment_placeholder_other') }}"/>
-                    @if ($errors->has('app_name'))
-                        <span class="error-block">
-                            <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                            {{ $errors->first('app_name') }}
-                        </span>
-                    @endif
-                </div>
-
-                <div class="form-group {{ $errors->has('app_debug') ? ' has-error ' : '' }}">
-                    <label for="app_debug">
-                        {{ trans('installer_messages.environment.wizard.form.app_debug_label') }}
-                    </label>
-                    <label for="app_debug_true">
-                        <input type="radio" name="app_debug" id="app_debug_true" value=true checked />
-                        {{ trans('installer_messages.environment.wizard.form.app_debug_label_true') }}
-                    </label>
-                    <label for="app_debug_false">
-                        <input type="radio" name="app_debug" id="app_debug_false" value=false />
-                        {{ trans('installer_messages.environment.wizard.form.app_debug_label_false') }}
-                    </label>
-                    @if ($errors->has('app_debug'))
-                        <span class="error-block">
-                            <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                            {{ $errors->first('app_debug') }}
-                        </span>
-                    @endif
-                </div>
-
-                <div class="form-group {{ $errors->has('app_log_level') ? ' has-error ' : '' }}">
-                    <label for="app_log_level">
-                        {{ trans('installer_messages.environment.wizard.form.app_log_level_label') }}
-                    </label>
-                    <select name="app_log_level" id="app_log_level">
-                        <option value="debug" selected>{{ trans('installer_messages.environment.wizard.form.app_log_level_label_debug') }}</option>
-                        <option value="info">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_info') }}</option>
-                        <option value="notice">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_notice') }}</option>
-                        <option value="warning">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_warning') }}</option>
-                        <option value="error">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_error') }}</option>
-                        <option value="critical">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_critical') }}</option>
-                        <option value="alert">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_alert') }}</option>
-                        <option value="emergency">{{ trans('installer_messages.environment.wizard.form.app_log_level_label_emergency') }}</option>
-                    </select>
-                    @if ($errors->has('app_log_level'))
-                        <span class="error-block">
-                            <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                            {{ $errors->first('app_log_level') }}
-                        </span>
-                    @endif
-                </div>
+                <input type="hidden" name="environment" value="local"/>
+                <input type="hidden" name="app_debug" value="false" />
+                <input type="hidden" name="app_log_level" value="debug" />
 
                 <div class="form-group {{ $errors->has('app_url') ? ' has-error ' : '' }}">
                     <label for="app_url">
@@ -118,31 +52,22 @@
                     @endif
                 </div>
 
-                <div class="buttons">
-                    <button class="button" onclick="showDatabaseSettings();return false">
-                        {{ trans('installer_messages.environment.wizard.form.buttons.setup_database') }}
-                        <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
-                    </button>
-                </div>
             </div>
-            <div class="tab" id="tab2content">
 
+            <label for="tab2" class="tab-label">
+                <i class="fa fa-database fa-2x fa-fw" aria-hidden="true"></i>
+                <br />
+                {{ trans('installer_messages.environment.wizard.tabs.database') }}
+            </label>
+            <div id="tab2content">
+
+                <input type="hidden" name="database_connection" value="mysql"/>
                 <div class="form-group {{ $errors->has('database_connection') ? ' has-error ' : '' }}">
                     <label for="database_connection">
                         {{ trans('installer_messages.environment.wizard.form.db_connection_label') }}
                     </label>
-                    <select name="database_connection" id="database_connection">
-                        <option value="mysql" selected>{{ trans('installer_messages.environment.wizard.form.db_connection_label_mysql') }}</option>
-                        <option value="sqlite">{{ trans('installer_messages.environment.wizard.form.db_connection_label_sqlite') }}</option>
-                        <option value="pgsql">{{ trans('installer_messages.environment.wizard.form.db_connection_label_pgsql') }}</option>
-                        <option value="sqlsrv">{{ trans('installer_messages.environment.wizard.form.db_connection_label_sqlsrv') }}</option>
-                    </select>
-                    @if ($errors->has('database_connection'))
-                        <span class="error-block">
-                            <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                            {{ $errors->first('database_connection') }}
-                        </span>
-                    @endif
+                    <b>{{ trans('installer_messages.environment.wizard.form.db_connection_label_mysql') }}</b>
+                    <br><br>
                 </div>
 
                 <div class="form-group {{ $errors->has('database_hostname') ? ' has-error ' : '' }}">
@@ -209,10 +134,30 @@
                         </span>
                     @endif
                 </div>
+            </div>
+            <div id="tab3content">
+
+                        <input type="hidden" name="broadcast_driver" value="log"/>
+                        <input type="hidden" name="cache_driver" value="file"/>
+                        <input type="hidden" name="cache_store" value="file"/>
+                        <input type="hidden" name="session_driver" value="file"/>
+                        <input type="hidden" name="queue_driver" value="sync"/>
+                        <input type="hidden" name="redis_hostname" value="127.0.0.1"/>
+                        <input type="hidden" name="redis_password" value="null"/>
+                        <input type="hidden" name="redis_port" value="6379"/>
+                        <input type="hidden" name="mail_driver" value="smtp"/>
+                        <input type="hidden" name="mail_host" value="smtp.mailtrap.io"/>
+                        <input type="hidden" name="mail_port" value="2525"/>
+                        <input type="hidden" name="mail_username" value="null"/>
+                        <input type="hidden" name="mail_password" value="null"/>
+                        <input type="hidden" name="mail_encryption" value="null"/>
+                        <input type="hidden" name="pusher_app_id" value=""/>
+                        <input type="hidden" name="pusher_app_key" value=""/>
+                        <input type="hidden" name="pusher_app_secret" value=""/>
 
                 <div class="buttons">
-                    <button class="button" onclick="showApplicationSettings();return false">
-                        {{ trans('installer_messages.environment.wizard.form.buttons.setup_application') }}
+                    <button class="button" type="submit">
+                        {{ trans('installer_messages.environment.wizard.form.buttons.install') }}
                         <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -223,5 +168,20 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/installer/wizard.js') }}"></script>
+    <script type="text/javascript">
+        function checkEnvironment(val) {
+            var element=document.getElementById('environment_text_input');
+            if(val=='other') {
+                element.style.display='block';
+            } else {
+                element.style.display='none';
+            }
+        }
+        function showDatabaseSettings() {
+            document.getElementById('tab2').checked = true;
+        }
+        function showApplicationSettings() {
+            document.getElementById('tab3').checked = true;
+        }
+    </script>
 @endsection

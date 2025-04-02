@@ -1,70 +1,46 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\Auth\MeController;
-use App\Http\Controllers\Api\v1\SettingController;
-use App\Http\Controllers\Api\v1\VisitorController;
-use App\Http\Controllers\Api\v1\EmployeeController;
-use App\Http\Controllers\Api\v1\LanguageController;
-use App\Http\Controllers\Api\v1\DashboardController;
-use App\Http\Controllers\Api\v1\AttendanceController;
-use App\Http\Controllers\Api\v1\Auth\LoginController;
-use App\Http\Controllers\Api\v1\Auth\LogoutController;
-use App\Http\Controllers\Api\v1\PreRegisterController;
-use App\Http\Controllers\Api\v1\Auth\RegisterController;
-use App\Http\Controllers\Api\v1\PushNotificationController;
-
-Route::group(['prefix' => 'v1'], function () {
-
-    Route::post('login', [LoginController::class, 'action']); //done
-
-    Route::group(['middleware' => 'auth:api'], function () {
-        Route::post('logout', [LogoutController::class, 'action']); //done
-        Route::get('me', [MeController::class, 'action']); //done
-        Route::get('dashboard', [DashboardController::class, 'index']); //done
-        Route::post('profile-update', [MeController::class, 'update']); //done
-        Route::post('change-password', [MeController::class, 'changePassword']); //done
-        Route::get('refresh-token', [MeController::class, 'refresh']); //done
-    });
-
-    //Emloyee
-    Route::get('employee', [EmployeeController::class, 'index']); //done
-    Route::get('employee/{id}/show', [EmployeeController::class, 'show']); //done
+use App\Http\Controllers\Api\ApiController;
 
 
-    //Pre-Register
-    Route::get('preregister/', [PreRegisterController::class, 'index']); //done
-    Route::post('preregister', [PreRegisterController::class, 'store']); //done
-    Route::get('preregister/{id}/show', [PreRegisterController::class, 'show']); //done
-    Route::post('preregister/{id}/', [PreRegisterController::class, 'update']); //done
-    Route::delete('preregister/{id}', [PreRegisterController::class, 'destroy']); //done
-    Route::post('preregister/check-preregister/find', [PreRegisterController::class, 'checkPreRegister']); //done
-    Route::get('preregister/search/{keyWord}', [PreRegisterController::class, 'search']);
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
+|
+*/
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/login', [ApiController::class, 'login'])->middleware(['APILog']);
+Route::get('/dashboard', [ApiController::class, 'dashboard'])->middleware(['auth:sanctum','APILog']);
+Route::get('/business-list', [ApiController::class, 'getBusinessList'])->middleware(['auth:sanctum','APILog']);
+Route::get('/appointment-list', [ApiController::class, 'getAppointmentList'])->middleware(['auth:sanctum','APILog']);
+Route::post('/change-business', [ApiController::class, 'changeBusiness'])->middleware(['auth:sanctum','APILog']);
+Route::post('/edit-business', [ApiController::class, 'editBusiness'])->middleware(['auth:sanctum','APILog']);
+Route::post('/delete-business', [ApiController::class, 'deleteBusiness'])->middleware(['auth:sanctum','APILog']);
+Route::post('/edit-profile', [ApiController::class, 'editProfile'])->middleware(['auth:sanctum','APILog']);
+Route::post('/change-password', [ApiController::class, 'changePassword'])->middleware(['auth:sanctum','APILog']);
+Route::get('/appointment-status-list', [ApiController::class, 'getAppointmentStatusList'])->middleware(['auth:sanctum','APILog']);
+Route::post('/change-appontment-status', [ApiController::class, 'changeAppointmentStatus'])->middleware(['auth:sanctum','APILog']);
+Route::get('/appointment-calendar-data', [ApiController::class, 'getAppointmentCalendarData'])->middleware(['auth:sanctum','APILog']);
+Route::post('/logout', [ApiController::class, 'logout'])->middleware(['APILog']);
+Route::get('/service-list', [ApiController::class, 'getServiceList'])->middleware(['auth:sanctum','APILog']);
+Route::post('/create-service', [ApiController::class, 'createService'])->middleware(['auth:sanctum','APILog']);
+Route::post('/edit-service', [ApiController::class, 'editService'])->middleware(['auth:sanctum','APILog']);
+Route::post('/delete-service', [ApiController::class, 'deleteService'])->middleware(['auth:sanctum','APILog']);
+Route::post('/delete-appointment', [ApiController::class, 'deleteAppointment'])->middleware(['auth:sanctum','APILog']);
+Route::get('/custom-status-list', [ApiController::class, 'getCustomStatusList'])->middleware(['auth:sanctum','APILog']);
+Route::post('/create-custom-status', [ApiController::class, 'createCustomStatus'])->middleware(['auth:sanctum','APILog']);
+Route::post('/edit-custom-status', [ApiController::class, 'editCustomStatus'])->middleware(['auth:sanctum','APILog']);
+Route::post('/delete-custom-status', [ApiController::class, 'deleteCustomStatus'])->middleware(['auth:sanctum','APILog']);
 
 
-    //attendance
-    Route::get('attendance/{date?}', [AttendanceController::class, 'index']);
-    Route::get('attendance/user/status', [AttendanceController::class, 'getStatus']);
-    Route::post('attendance/user/clock-in', [AttendanceController::class, 'clockIn']);
-    Route::get('attendance/user/clock-out', [AttendanceController::class, 'clockOut']);
-
-    //visitor
-    Route::get('visitors/', [VisitorController::class, 'index']);
-    Route::get('visitors/search/{keyWord}', [VisitorController::class, 'search']);
-    Route::get('visitors/show/{id}', [VisitorController::class, 'show']);
-    Route::post('visitors/add', [VisitorController::class, 'store']);
-    Route::post('visitors/edit/{id}', [VisitorController::class, 'update']);
-    Route::delete('visitors/delete/{id}', [VisitorController::class, 'destroy']);
-    Route::get('visitor/check-out/{id}', [VisitorController::class, 'checkout']);
-    Route::post('visitor/check-in', [VisitorController::class, 'checkin']);
-    Route::post('visitor/check-in/validator', [VisitorController::class, 'checkinCheck']);
-    Route::get('visitor/change-status/{id}/{status}',  [VisitorController::class, 'changeStatus']);
-    Route::post('visitor/find_visitor/', [VisitorController::class, 'findVisitor']); //done
-
-    Route::get('settings/', [SettingController::class, 'index']);
-    Route::get('languages/', [LanguageController::class, 'index']);
-
-    //push notification
-    Route::post('fcm-subscribe', [PushNotificationController::class, 'fcmSubscribe']);
-    Route::post('fcm-unsubscribe', [PushNotificationController::class, 'fcmUnsubscribe']);
-});

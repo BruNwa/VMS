@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Validation\Rule;
 
 return [
 
@@ -14,7 +13,7 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '8.2.0',
+        'minPhpVersion' => '8.1.0',
     ],
     'final' => [
         'key' => true,
@@ -22,18 +21,13 @@ return [
     ],
     'requirements' => [
         'php' => [
-            'Imagick',
             'openssl',
             'pdo',
             'mbstring',
             'tokenizer',
             'JSON',
             'cURL',
-            'xml',
-            'Ctype',
-            'BCMath',
-            'Zip',
-            'gd'
+            'zip'
         ],
         'apache' => [
             'mod_rewrite',
@@ -50,9 +44,12 @@ return [
     |
     */
     'permissions' => [
-        'storage/framework/'     => '775',
-        'storage/logs/'          => '775',
-        'bootstrap/cache/'       => '775',
+        'storage/'               => '777',
+        'storage/framework/'     => '777',
+        'storage/logs/'          => '777',
+        'bootstrap/cache/'       => '777',
+        'resources/lang'         => '777',
+        'uploads/'               => '777',
     ],
 
     /*
@@ -70,9 +67,7 @@ return [
                 'app_name'              => 'required|string|max:50',
                 'environment'           => 'required|string|max:50',
                 'environment_custom'    => 'required_if:environment,other|max:50',
-                'app_debug'             => [
-                    'required',
-                ],
+                'app_debug'             => 'required|string',
                 'app_log_level'         => 'required|string|max:50',
                 'app_url'               => 'required|url',
                 'database_connection'   => 'required|string|max:50',
@@ -81,6 +76,23 @@ return [
                 'database_name'         => 'required|string|max:50',
                 'database_username'     => 'required|string|max:50',
                 'database_password'     => 'nullable|string|max:50',
+                'broadcast_driver'      => 'required|string|max:50',
+                'cache_driver'          => 'required|string|max:50',
+                'cache_store'          => 'required|string|max:50',
+                'session_driver'        => 'required|string|max:50',
+                'queue_driver'          => 'required|string|max:50',
+                'redis_hostname'        => 'required|string|max:50',
+                'redis_password'        => 'required|string|max:50',
+                'redis_port'            => 'required|numeric',
+                'mail_driver'           => 'required|string|max:50',
+                'mail_host'             => 'required|string|max:50',
+                'mail_port'             => 'required|string|max:50',
+                'mail_username'         => 'required|string|max:50',
+                'mail_password'         => 'required|string|max:50',
+                'mail_encryption'       => 'required|string|max:50',
+                'pusher_app_id'         => 'max:50',
+                'pusher_app_key'        => 'max:50',
+                'pusher_app_secret'     => 'max:50',
             ],
         ],
     ],
@@ -96,7 +108,7 @@ return [
     'installed' => [
         'redirectOptions' => [
             'route' => [
-                'name' => 'home',
+                'name' => 'welcome',
                 'data' => [],
             ],
             'abort' => [
@@ -118,7 +130,7 @@ return [
     | route, abort, dump, 404, default, ''
     |
     */
-    'installedAlreadyAction' => 'route',
+    'installedAlreadyAction' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -130,68 +142,5 @@ return [
     |
     */
     'updaterEnabled' => 'true',
-
-    /* purchase code verification objects */
-
-    'item_name' => 'visitor-pass',
-    /*
-     |-----------------------------------------------------------------------------------------------
-     | The item's version on CodeCanyon
-     |-----------------------------------------------------------------------------------------------
-     |
-     */
-
-    'item_version' => '5.8',
-
-    /*
-     |-----------------------------------------------------------------------------------------------
-     | The item's ID on CodeCanyon
-     |-----------------------------------------------------------------------------------------------
-     |
-     */
-
-    'itemId' => '24643230',
-
-    /*
-     |-----------------------------------------------------------------------------------------------
-     | Purchase code checker URL
-     |-----------------------------------------------------------------------------------------------
-     |
-     */
-
-    'purchaseCodeCheckerUrl' => 'https://demo.inilabs.net/tracker/api/check',
-
-    'licenseCodeCheckerUrl' => 'https://support.inilabs.net',
-
-    'loginUrl' => 'https://inilabs.net/login',
-
-    'upgradeLicenseCodeUrl' => 'https://inilabs.net/downloads',
-
-    'buyNowUrl' => 'https://codecanyon.net/item/visitor-pass-management-system/24643230',
-
-    'supportUrl' => 'https://inilabsn.freshdesk.com/support/home',
-    /*
-     |-----------------------------------------------------------------------------------------------
-     | Purchase Code
-     |-----------------------------------------------------------------------------------------------
-     |
-     */
-
-    'purchaseCode' => env('PURCHASE_CODE', ''),
-
-    /*
-     |-----------------------------------------------------------------------------------------------
-     | Demo Website Info
-     |-----------------------------------------------------------------------------------------------
-     |
-     */
-
-    'demo' => [
-        'domain' => 'https://demo.quickpass.xyz',
-        'hosts'   => [
-            'https://demo.quickpass.xyz',
-        ],
-    ],
-
 
 ];

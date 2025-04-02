@@ -2,31 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
-class ThemeSetting extends Model implements HasMedia
+class ThemeSetting extends Model
 {
-    use InteractsWithMedia;
+    use HasFactory;
 
-    protected $table    = "settings";
-    public $timestamps  = false;
-    protected $guarded  = [];
-
-
-    public function getLogoAttribute()
-    {
-
-        if (!empty($this->getFirstMediaUrl('site-logo'))) {
-            return asset($this->getFirstMediaUrl('site-logo'));
-        }
-        return asset('images/site_logo.png');
-    }
-
-    public function getFaviconAttribute(): string
-    {
-        $mediaUrl = $this->getFirstMediaUrl('fav-icon');
-        return $mediaUrl ? asset($mediaUrl) : asset('images/favicon.png');
-    }
+    protected $fillable = [
+        'key',
+        'value',
+        'theme',
+        'business_id',
+        'created_by',
+    ];
 }

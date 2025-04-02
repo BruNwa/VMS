@@ -2,31 +2,16 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponser;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
     /**
-     * A list of exception types with their corresponding custom log levels.
-     *
-     * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
-     */
-    protected $levels = [
-        //
-    ];
-
-    /**
-     * A list of the exception types that are not reported.
-     *
-     * @var array<int, class-string<\Throwable>>
-     */
-    protected $dontReport = [
-        //
-    ];
-
-    /**
-     * A list of the inputs that are never flashed to the session on validation exceptions.
+     * The list of the inputs that are never flashed to the session on validation exceptions.
      *
      * @var array<int, string>
      */
@@ -38,38 +23,17 @@ class Handler extends ExceptionHandler
 
     /**
      * Register the exception handling callbacks for the application.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->reportable(function (Throwable $e) {
             //
         });
-    }
 
-    public function report(Throwable $exception)
-    {
-        parent::report($exception);
-    }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
-     */
-    public function render($request, Throwable $exception)
-    {
-        if ($request->is('admin/*')) {
-            return parent::render($request, $exception);
-        }
-        if($exception instanceof \Illuminate\Auth\AuthenticationException ){
-            return response(['status' => 401, 'message' => 'Unauthorized'], 401);
-        }
-        return parent::render($request, $exception);
+        $this->renderable(function (AuthenticationException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->error(['message' => 'Invalid token.'], 'fail', 401, 9);
+            }
+        });
     }
 }

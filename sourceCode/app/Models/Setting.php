@@ -1,17 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dipok
- * Date: 20/4/20
- * Time: 2:47 PM
- */
 
 namespace App\Models;
 
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    protected $table = 'settings';
+    use HasFactory;
+
+    protected $fillable = [
+        'key',
+        'value',
+        'business',
+        'created_by',
+    ];
 }

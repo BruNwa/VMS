@@ -1,224 +1,377 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BanktransferController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FinalController;
-use App\Http\Controllers\CheckInController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Admin\AddonController;
-use App\Http\Controllers\EnvironmentController;
-use App\Http\Controllers\PurchaseCodeController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\VisitorController;
-use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\LanguageController;
-use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AttendanceController;
-use App\Http\Controllers\Admin\DepartmentsController;
-use App\Http\Controllers\Admin\PreRegisterController;
-use App\Http\Controllers\Admin\DesignationsController;
-use App\Http\Controllers\Admin\LocalizationController;
-use App\Http\Controllers\Admin\VisitorReportController;
-use App\Http\Controllers\Admin\EmployeeReportController;
-use App\Http\Controllers\Admin\WebNotificationController;
-use App\Http\Controllers\Admin\AttendanceReportController;
-use App\Http\Controllers\Admin\PreRegistersReportController;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Company\SettingsController as CompanySettingsController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SuperAdmin\SettingsController as SuperAdminSettingsController;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\BusinessHoursController;
+use App\Http\Controllers\BusinessHolidayController;
+use App\Http\Controllers\CustomStatusController;
+use App\Http\Controllers\EmailTemplateController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\CustomFieldController;
+use App\Http\Controllers\ThemeSettingController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\SubscribeController;
 
-Auth::routes();
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+// Route::get('appointments/{slug}/{appointment?}', [AppointmentController::class, 'appointmentForm'])->name('appointments.form');
+Route::any('appointments/{slug}/{appointment?}',[AppointmentController::class,'appointmentForm'])->name('appointments.form');
+Route::post('appointment-book', [AppointmentController::class, 'appointmentFormSubmit'])->name('appointment.form.submit');
+Route::get('appointments/{slug}/{id}', [AppointmentController::class, 'appointmentDone'])->name('appointments.done');
+Route::post('appointment-duration', [AppointmentController::class, 'appointmentDuration'])->name('appointment.duration');
+Route::get('get-staff-data', [StaffController::class, 'getStaffData'])->name('get.staff.data');
+Route::get('appointment/rtl', [AppointmentController::class, 'appointmentRtlSetting'])->name('appointment.rtl');
+Route::post('check-user-data', [AppointmentController::class, 'checkUser'])->name('check.user.data');
 
-Route::group(['middleware' => ['installed']], function () {
-    Auth::routes(['verify' => false]);
+Route::resource('contacts', ContactUsController::class);
+Route::get('/contacts/{id}/description', [ContactUsController::class,'description'])->name('contact.description');
+Route::resource('subscribes', SubscribeController::class);
+
+// for checking online appointment for theme
+Route::get('check-service-online-meeting/{businessSlug}', [ServiceController::class, 'checkServiceOnlineMeeting'])->name('check.service.online.meeting');
+
+// for checking online appointment for form layout
+Route::get('check-service-online-meeting-form-layout/{businessSlug}', [ServiceController::class, 'checkServiceOnlineMeetingFormLayout'])->name('check.service.online.meeting');
+
+// Auth::routes();
+require __DIR__ . '/auth.php';
+
+Route::get('/register/{lang?}', [RegisteredUserController::class, 'create'])->name('register');
+Route::get('/login/{lang?}', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::get('/forgot-password/{lang?}', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::get('/verify-email/{lang?}', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
+
+// module page before login
+Route::get('add-on', [HomeController::class, 'Software'])->name('apps.software');
+Route::get('add-on/details/{slug}', [HomeController::class, 'SoftwareDetails'])->name('software.details');
+Route::get('pricing', [HomeController::class, 'Pricing'])->name('apps.pricing');
+Route::get('/', [HomeController::class, 'index'])->name('start');
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    //Role & Permission
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+
+
+
+    //dashbord
+    // if (module_is_active('GoogleAuthentication')) {
+    //     Route::get('/dashboard', [HomeController::class, 'Dashboard'])->name('dashboard')->middleware(
+    //         [
+    //             '2fa',
+    //         ]
+    //     );
+    //     Route::get('/home', [HomeController::class, 'Dashboard'])->name('home')->middleware(
+    //         [
+    //             '2fa',
+    //         ]
+    //     );
+    //     Route::get('/appointment-dashboard/{staff?}', [HomeController::class, 'AppointmentDashboard'])->name('appointment.dashboard')->middleware(
+    //         [
+    //             '2fa',
+    //         ]
+    //     );
+    
+    // } else {
+        Route::get('/dashboard', [HomeController::class, 'Dashboard'])->name('dashboard');
+        Route::get('/appointment-dashboard/{staff?}', [HomeController::class, 'AppointmentDashboard'])->name('appointment.dashboard');
+        Route::any('dashboard-index', [HomeController::class, 'Dashboard'])->name('dashboard.index');
+        Route::get('/home', [HomeController::class, 'Dashboard'])->name('home');
+    // }
+    Route::any('dashboard-index', [HomeController::class, 'Dashboard'])->name('dashboard.index');
+    // settings
+    Route::resource('settings', SettingsController::class);
+    Route::post('settings-save', [CompanySettingsController::class, 'store'])->name('settings.save');
+    Route::post('company/settings-save', [CompanySettingsController::class, 'store'])->name('company.settings.save');
+    Route::post('super-admin/settings-save', [SuperAdminSettingsController::class, 'store'])->name('super.admin.settings.save');
+    Route::post('super-admin/system-settings-save', [SuperAdminSettingsController::class, 'SystemStore'])->name('super.admin.system.setting.store');
+    Route::post('company/system-settings-save', [CompanySettingsController::class, 'SystemStore'])->name('company.system.setting.store');
+    Route::post('comapny-currency-settings', [CompanySettingsController::class, 'saveCompanyCurrencySettings'])->name('company.setting.currency.settings');
+
+    Route::post('currency-settings', [SuperAdminSettingsController::class, 'saveCurrencySettings'])->name('super.admin.currency.settings');
+
+    Route::post('company-setting-save', [CompanySettingsController::class, 'companySettingStore'])->name('company.setting.save');
+    Route::post('company/week-settings-save', [CompanySettingsController::class, 'weekStore'])->name('company.week.setting.store');
+    Route::post('/update-note-value', [SuperAdminSettingsController::class, 'updateNoteValue'])->name('admin.update.note.value');
+    Route::post('company/update-note-value', [CompanySettingsController::class, 'companyupdateNoteValue'])->name('company.update.note.value');
+
+    Route::post('company/custom-js-save', [CompanySettingsController::class, 'CustomJsStore'])->name('company.custom.js.store');
+    Route::post('company/custom-css-save', [CompanySettingsController::class, 'CustomCssStore'])->name('company.custom.css.store');
+    Route::post('company/default-status-save', [CompanySettingsController::class, 'DefaultStatusStore'])->name('company.default.status.store');
+
+    Route::post('company/booking-mode-save', [CompanySettingsController::class, 'bookingModeStore'])->name('company.booking.mode.store');
+
+    Route::post('email-settings-save', [SettingsController::class, 'mailStore'])->name('email.setting.store');
+    Route::post('test-mail', [SettingsController::class, 'testMail'])->name('test.mail');
+    Route::post('test-mail-send', [SettingsController::class, 'sendTestMail'])->name('test.mail.send');
+    Route::post('email-notification-settings-save', [SettingsController::class, 'mailNotificationStore'])->name('email.notification.setting.store');
+
+    Route::post('storage-settings-save', [SuperAdminSettingsController::class, 'storageStore'])->name('storage.setting.store');
+    Route::post('seo/setting/save', [SuperAdminSettingsController::class, 'seoSetting'])->name('seo.setting.save');
+
+    Route::get('/setting/section/{module}/{methord?}', [SettingsController::class, 'getSettingSection'])->name('setting.section.get');
+
+    // bank-transfer
+    Route::resource('bank-transfer-request', BanktransferController::class);
+    Route::post('bank-transfer-setting', [BanktransferController::class, 'setting'])->name('bank.transfer.setting');
+    Route::post('/bank/transfer/pay', [BanktransferController::class, 'planPayWithBank'])->name('plan.pay.with.bank');
+
+    //users
+    Route::resource('users', UserController::class);
+    Route::get('users/list/view', [UserController::class, 'List'])->name('users.list.view');
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
+    Route::post('edit-profile', [UserController::class, 'editprofile'])->name('edit.profile');
+    Route::post('change-password', [UserController::class, 'updatePassword'])->name('update.password');
+    Route::any('user-reset-password/{id}', [UserController::class, 'UserPassword'])->name('users.reset');
+    Route::get('user-login/{id}', [UserController::class, 'LoginManage'])->name('users.login');
+    Route::post('user-reset-password/{id}', [UserController::class, 'UserPasswordReset'])->name('user.password.update');
+    Route::get('users/{id}/login-with-company', [UserController::class, 'LoginWithCompany'])->name('login.with.company');
+    Route::get('company-info/{id}', [UserController::class, 'CompnayInfo'])->name('company.info');
+    Route::post('user-unable', [UserController::class, 'UserUnable'])->name('user.unable');
+    Route::get('business-links/{id}', [UserController::class, 'BusinessLinks'])->name('business.links');
+    Route::get('user-verified/{id}', [UserController::class, 'verifeduser'])->name('user.verified');
+
+    //User Log
+    Route::get('users/logs/history', [UserController::class, 'UserLogHistory'])->name('users.userlog.history');
+    Route::get('users/logs/{id}', [UserController::class, 'UserLogView'])->name('users.userlog.view');
+    Route::delete('users/logs/destroy/{id}', [UserController::class, 'UserLogDestroy'])->name('users.userlog.destroy');
+
+
+    // impersonating
+    Route::get('login-with-company/exit', [UserController::class, 'ExitCompany'])->name('exit.company');
+
+    // Language
+    Route::get('/lang/change/{lang}', [LanguageController::class, 'changeLang'])->name('lang.change');
+    Route::get('langmanage/{lang?}/{module?}', [LanguageController::class, 'index'])->name('lang.index');
+    Route::get('create-language', [LanguageController::class, 'create'])->name('create.language');
+    Route::post('langs/{lang?}/{module?}', [LanguageController::class, 'storeData'])->name('lang.store.data');
+    Route::post('disable-language', [LanguageController::class, 'disableLang'])->name('disablelanguage');
+    Route::any('store-language', [LanguageController::class, 'store'])->name('store.language');
+    Route::delete('/lang/{id}', [LanguageController::class, 'destroy'])->name('lang.destroy');
+    // End Language
+
+    // location
+    Route::resource('location', LocationController::class);
+    // End location
+
+    // category
+    Route::resource('category', CategoryController::class);
+    // End category
+
+    // service
+    Route::resource('service', ServiceController::class);
+    // End service
+
+    // service
+    Route::resource('staff', StaffController::class);
+    // End service
+
+    // appointment
+    Route::resource('appointment', AppointmentController::class);
+
+    Route::post('appointment/list', [AppointmentController::class, 'index'])->name('appointment.list.index');
+
+    Route::get('appointment-calendar', [AppointmentController::class, 'appointmentCalendar'])->name('appointment.calendar');
+    Route::get('appointment-details/{id}', [AppointmentController::class, 'appointmentDetails'])->name('appointment.details');
+
+
+    Route::get('appointment-status-change/{id}', [AppointmentController::class, 'appointmentStatusChange'])->name('appointment.status.change');
+    Route::post('appointment-status-update/{id}', [AppointmentController::class, 'appointmentStatusUpdate'])->name('appointment.status.update');
+
+    Route::post('appointment-attachment-destroy/{id}', [AppointmentController::class, 'appointmentAttachmentDelete'])->name('appointment.attachment.destroy');
+    // End appointment
+
+    // custom field
+    Route::post('business/custom-field-setting/{id}', [CustomFieldController::class, 'CustomFieldSetting'])->name('custom-field.setting');
+    Route::post('/delete-field', [CustomFieldController::class, 'destroy'])->name('delete.field');
+    // End custom field
+
+    // custom status
+    Route::resource('custom-status', CustomStatusController::class);
+    // End custom status
+
+    // Files
+    Route::post('business/files-setting/{id}', [FileController::class, 'Filesetting'])->name('files.setting');
+    // End Files
+
+    // customer
+    Route::resource('customer', CustomerController::class);
+    Route::get('customer-list', [CustomerController::class, 'customerList'])->name('customer.list');
+    // End customer
+
+    // business hours
+    Route::resource('business-hours', BusinessHoursController::class);
+    // End business hours
+
+    // business hours
+    Route::resource('business-holiday', BusinessHolidayController::class);
+    // End business hours
+
+    // business
+    Route::resource('business', BusinessController::class);
+    Route::get('manage/business/', [BusinessController::class, 'ManageBusiness'])->name('manage.business');
+    Route::post('business/theme/update', [BusinessController::class, 'BusinessThemeUpdate'])->name('business.theme.update');
+    Route::get('business/{id}/manage', [BusinessController::class, 'businessManage'])->name('business.manage');
+    Route::get('business/change/{id}', [BusinessController::class, 'change'])->name('business.change');
+    Route::post('business/check', [BusinessController::class, 'businessCheck'])->name('business.check');
+    Route::post('business/domain-setting/{id}', [BusinessController::class, 'domainsetting'])->name('business.domain-setting');
+    Route::post('business/slot-capacity-setting/{id}', [BusinessController::class, 'slotCapacitysetting'])->name('slot.capacity-setting');
+    Route::post('business/appointment-reminder-setting/{id}', [BusinessController::class, 'appointmentRemindersetting'])->name('appointment.reminder-setting');
+    // end business
+
+    // theme customize
+    Route::get('themes/{id}/customize', [ThemeSettingController::class, 'themeCustomize'])->name('business.customize');
+    Route::get('themes/{id}/customize/{slug}/{sub_slug}', [ThemeSettingController::class, 'customize_theme'])->name('customize.edit');
+    Route::post('themes/{id}/customize', [ThemeSettingController::class, 'customize_theme_update'])->name('customize.update');
+    Route::post('file-get', [ThemeSettingController::class, 'imageFileGet'])->name('file.get');
+    // end theme customize
+
+
+    // blog
+    Route::get('themes/{id}/manage-blog', [BlogController::class, 'blogManage'])->name('blog.manage');
+    Route::get('themes/{id}/blog', [BlogController::class, 'blogCreate'])->name('blog.create');
+    Route::resource('blogs', BlogController::class);
+    // End blog
+
+    // testimonial
+    Route::get('themes/{id}/manage-testimonial', [TestimonialController::class, 'testimonialManage'])->name('testimonial.manage');
+    Route::get('themes/{id}/testimonial', [TestimonialController::class, 'testimonialCreate'])->name('testimonial.create');
+    Route::resource('testimonials', TestimonialController::class);
+    // End testimonial
+
+    // Plans
+    Route::resource('plans', PlanController::class);
+
+    Route::get('plan/list', [PlanController::class, 'PlanList'])->name('plan.list');
+    Route::post('plan/store', [PlanController::class, 'PlanStore'])->name('plan.store');
+
+    Route::get('plan/active', [PlanController::class, 'ActivePlans'])->name('active.plans');
+    Route::any('plan/package-data', [PlanController::class, 'PackageData'])->name('package.data');
+    Route::get('plan/plan-buy/{id}', [PlanController::class, 'PlanBuy'])->name('plan.buy');
+    Route::get('plan/plan-trial/{id}', [PlanController::class, 'PlanTrial'])->name('plan.trial');
+    Route::get('plan/order', [PlanController::class, 'orders'])->name('plan.order.index');
+    Route::get('add-one/detail/{id}', [PlanController::class, 'AddOneDetail'])->name('add-one.detail');
+    Route::post('add-one/detail/save/{id}', [PlanController::class, 'AddOneDetailSave'])->name('add-one.detail.save');
+
+    Route::get('plan/order-refund/{id}', [PlanController::class, 'planRefund'])->name('order.refund');
+    Route::post('plan-enable', [PlanController::class, 'planEnable'])->name('plan.enable');
+
+
+    Route::post('company/settings-save', [CompanySettingsController::class, 'store'])->name('company.settings.save');
+    Route::post('super-admin/settings-save', [SuperAdminSettingsController::class, 'store'])->name('super.admin.settings.save');
+    Route::post('storage-settings-save', [SuperAdminSettingsController::class, 'storageStore'])->name('storage.setting.store');
+
+    Route::post('super-admin/custom-js-save', [SuperAdminSettingsController::class, 'customJsStore'])->name('super.admin.custom.js.save');
+    Route::post('super-admin/custom-css-save', [SuperAdminSettingsController::class, 'customCssStore'])->name('super.admin.custom.css.save');
+
+    Route::post('cookie-settings-save', [SuperAdminSettingsController::class, 'CookieSetting'])->name('cookie.setting.store');
+
+
+    // Coupon
+    Route::resource('coupons', CouponController::class);
+    Route::get('/apply-coupon', [CouponController::class, 'applyCoupon'])->name('apply.coupon');
+    // end Coupon
+
+    // Module Install
+    Route::get('modules/list', [ModuleController::class, 'index'])->name('module.index');
+    Route::get('modules/add', [ModuleController::class, 'add'])->name('module.add');
+    Route::post('install-modules', [ModuleController::class, 'install'])->name('module.install');
+    Route::post('remove-modules/{module}', [ModuleController::class, 'remove'])->name('module.remove');
+    Route::post('modules-enable', [ModuleController::class, 'enable'])->name('module.enable');
+    Route::get('cancel/add-on/{name}', [ModuleController::class, 'CancelAddOn'])->name('cancel.add.on');
+    // End Module Install
+
+    // Email Templates
+    Route::resource('email-templates', EmailTemplateController::class);
+    Route::get('email_template_lang/{id}/{lang?}', [EmailTemplateController::class, 'show'])->name('manage.email.language');
+    Route::put('email_template_store/{pid}', [EmailTemplateController::class, 'storeEmailLang'])->name('store.email.language');
+    // Route::put('email_template_status/{id}', [EmailTemplateController::class, 'updateStatus'])->name('status.email.language');
+    Route::resource('email_template', EmailTemplateController::class);
+    // End Email Templates
+
+    //notification
+    Route::resource('notification-template', NotificationController::class);
+    Route::get('notification-template/{id}/{lang?}', [NotificationController::class, 'show'])->name('manage.notification.language');
+    Route::post('notification-template/{pid}', [NotificationController::class, 'storeNotificationLang'])->name('store.notification.language');
+
+    // Routes For OnlineAppointment Option.
+    Route::get('online-appointment-create/{serviceId}/{businessId}', [ServiceController::class, 'createOnlineAppointment'])->name('create.online.appointment');
+    Route::post('save-online-meeting-setting/{serviceId}', [ServiceController::class, 'saveOnlineMeetingSetting'])->name('save.online.meeting.setting');
+
+
 });
 
-Route::group(['middleware' => ['installed', 'not-verified']], function () {
-    Route::get('/license-activate', [PurchaseCodeController::class, 'licenseCodeActivate'])->name('license-activate');
+Route::middleware(['web'])->group(function (){
+    Route::get('find-appointment/{businessSlug}', [HomeController::class, 'findAppointment'])->name('find.appointment');
+    Route::post('track-appointment/{businessSlug}', [HomeController::class, 'trackAppointment'])->name('track.appointment');
 });
 
-Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'middleware' => ['web', 'install']], function () {
-    Route::post('environment/saveWizard', [EnvironmentController::class, 'saveWizard'])->name('environmentSaveWizard');
-    Route::get('purchase-code', [PurchaseCodeController::class, 'index'])->name('purchase_code');
-    Route::post('purchase-code', [PurchaseCodeController::class, 'action'])->name('purchase_code.check');
-    Route::get('final', [FinalController::class, 'finish'])->name('final');
+Route::get('module/reset', [ModuleController::class, 'ModuleReset'])->name('module.reset');
+Route::post('guest/module/selection', [ModuleController::class, 'GuestModuleSelection'])->name('guest.module.selection');
+
+// cookie
+Route::get('cookie/consent', [SuperAdminSettingsController::class, 'CookieConsent'])->name('cookie.consent');
+
+// cache
+Route::get('/config-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
+    return redirect()->back()->with('success', 'Cache Clear Successfully');
+})->name('config.cache');
+
+Route::get('composer/json',function(){
+    $path = base_path('packages/workdo');
+    $modules = \Illuminate\Support\Facades\File::directories($path);
+
+    $moduleNames = array_map(function($dir) {
+        return basename($dir);
+    }, $modules);
+
+    $require = '';
+    $repo = '';
+    foreach($moduleNames as $module){
+        $packageName = preg_replace('/([a-z])([A-Z])/', '$1-$2', $module);
+        $require .= '"workdo/'.strtolower($packageName).'": "dev-testing",';
+        $repo .= '{
+            "type": "path",
+            "url": "packages/workdo/'.$module.'"
+        },';
+    }
+    return $require . '<br><br><br>' . $repo;
 });
-
-Route::redirect('/', '/admin/dashboard')->middleware('backend_permission');
-Route::redirect('/admin', '/DashboardControllermin/dashboard')->middleware('backend_permission');
-
-Route::group(['prefix' => 'admin', 'middleware' => ['installed'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-    Route::get('login', [LoginController::class, 'showLoginForm']);
-});
-
-Route::get('admin/lang/{locale}', [LocalizationController::class, 'index'])->middleware(['installed'])->name('admin.lang.index');
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'installed', 'backend_permission'], 'as' => 'admin.'], function () {
-
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::post('get-total-preregister', [DashboardController::class, 'getTotalPreregister'])->name('get.total.preregister');
-    Route::post('get-total-visitor', [DashboardController::class, 'getTotalVisitor'])->name('get.total.visitor');
-    Route::post('get-total-visitor-state', [DashboardController::class, 'getTotalVisitorState'])->name('get.total.visitor.state');
-
-
-    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('profile/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
-    Route::put('profile/update{update}', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('profile/change-password', [ProfileController::class, 'changePasswordForm'])->name('profile.changepassword');
-    Route::put('profile/change', [ProfileController::class, 'change'])->name('profile.change');
-
-    Route::resource('adminusers', AdminUserController::class);
-    Route::get('get-adminusers', [AdminUserController::class, 'getAdminUsers'])->name('adminusers.get-adminusers');
-    Route::resource('role', RoleController::class);
-    Route::post('role/save-permission/{id}', [RoleController::class, 'savePermission'])->name('role.save-permission');
-    // role module
-    Route::get('get-roles', [RoleController::class, 'getroles'])->name('roles.get-roles');
-
-    //designations
-    Route::prefix('designations')->name('designations.')->group(function () {
-        Route::get('/', [DesignationsController::class, 'index'])->name('index');
-        Route::get('list', [DesignationsController::class, 'list'])->name('list');
-        Route::get('/create', [DesignationsController::class, 'create'])->name('create');
-        Route::post('/', [DesignationsController::class, 'store'])->name('store');
-        Route::get('/show/{designation}', [DesignationsController::class, 'show'])->name('show');
-        Route::get('/{designation}', [DesignationsController::class, 'edit'])->name('edit');
-        Route::put('/{designation}', [DesignationsController::class, 'update'])->name('update');
-        Route::delete('{designation}', [DesignationsController::class, 'destroy'])->name('destroy');
-    });
-
-    //departments
-    Route::prefix('departments')->name('departments.')->group(function () {
-        Route::get('/', [DepartmentsController::class, 'index'])->name('index');
-        Route::get('list', [DepartmentsController::class, 'list'])->name('list');
-        Route::get('/create', [DepartmentsController::class, 'create'])->name('create');
-        Route::post('/', [DepartmentsController::class, 'store'])->name('store');
-        Route::get('/show/{department}', [DepartmentsController::class, 'show'])->name('show');
-        Route::get('/{department}', [DepartmentsController::class, 'edit'])->name('edit');
-        Route::put('/{department}', [DepartmentsController::class, 'update'])->name('update');
-        Route::delete('/{department}', [DepartmentsController::class, 'destroy'])->name('destroy');
-    });
-
-    //web-token
-    Route::post('store-token', [WebNotificationController::class, 'store'])->name('store.token');
-
-    //employee route
-    Route::resource('employees', EmployeeController::class);
-    Route::get('get-employees', [EmployeeController::class, 'getEmployees'])->name('employees.get-employees');
-    Route::get('employees/get-pre-registers/{id}', [EmployeeController::class, 'getPreRegister'])->name('employees.get-pre-registers');
-    Route::get('employees/get-visitors/{id}', [EmployeeController::class, 'getVisitor'])->name('employees.get-visitors');
-    Route::put('employees/check/{id}', [EmployeeController::class, 'checkEmployee'])->name('employees.check');
-
-    //pre-registers
-    Route::resource('pre-registers', PreRegisterController::class);
-    Route::get('get-pre-registers', [PreRegisterController::class, 'getPreRegister'])->name('pre-registers.get-pre-registers');
-
-    //visitors
-    Route::resource('visitors', VisitorController::class);
-    Route::post('visitor/search', [VisitorController::class, 'search'])->name('visitor.search');
-    Route::get('visitor/check-out/{visitingDetail}', [VisitorController::class, 'checkout'])->name('visitors.checkout');
-    Route::get('visitor/change-status/{id}/{status}/{dashboard}',  [VisitorController::class, 'changeStatus'])->name('visitor.change-status');
-    Route::get('get-visitors', [VisitorController::class, 'getVisitor'])->name('visitors.get-visitors');
-    Route::get('get-visitor-list', [DashboardController::class, 'getVisitor'])->name('get-visitor.list');
-    Route::get('visitor/disable/{id}',  [VisitorController::class, 'visitorDisable'])->name('visitors.disable');
-    Route::get('visitor/unblock/{id}',  [VisitorController::class, 'visitorUnblock'])->name('visitors.unblock');
-
-    //report
-    //report
-    Route::get('admin-visitor-report', [VisitorReportController::class, 'index'])->name('admin.report.visitor.index');
-    Route::get('admin-visitor-report/list', [VisitorReportController::class, 'list'])->name('report.visitor.list');
-
-    Route::get('admin-pre-registers-report', [PreRegistersReportController::class, 'index'])->name('admin.report.pre-registers.index');
-    Route::get('admin-pre-registers-report/list', [PreRegistersReportController::class, 'list'])->name('report.pre-registers.list');
-
-    Route::get('admin-attendance-report', [AttendanceReportController::class, 'index'])->name('admin.report.attendance.index');
-    Route::get('admin-attendance-report/list', [AttendanceReportController::class, 'list'])->name('report.attendance.list');
-
-    Route::get('admin-pre-registers-report', [PreRegistersReportController::class, 'index'])->name('admin-pre-registers-report.index');
-    Route::post('admin-pre-registers-report', [PreRegistersReportController::class, 'index'])->name('admin-pre-registers-report.post');
-
-    Route::get('attendance-report', [AttendanceReportController::class, 'index'])->name('attendance-report.index');
-    Route::post('attendance-report', [AttendanceReportController::class, 'index'])->name('attendance-report.post');
-
-    Route::get('employee-report', [EmployeeReportController::class, 'index'])->name('employee-report.index');
-    Route::post('employee-report', [EmployeeReportController::class, 'index'])->name('employee-report.post');
-
-
-    Route::post('admin-attendance/clockin', [AttendanceController::class, 'clockIn'])->name('attendance.clockin');
-    Route::post('admin-attendance/clockout', [AttendanceController::class, 'clockOut'])->name('attendance.clockout');
-
-    Route::resource('attendance', AttendanceController::class);
-    Route::get('get-attendance', [AttendanceController::class, 'getAttendance'])->name('attendance.get-attendance');
-    //language
-    Route::resource('language', LanguageController::class);
-    Route::get('get-language', [LanguageController::class, 'getLanguage'])->name('language.get-language');
-    Route::get('language/change-status/{id}/{status}', [LanguageController::class, 'changeStatus'])->name('language.change-status');
-
-    //Addons
-    Route::resource('addons', AddonController::class);
-    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
-        Route::get('/', [SettingController::class, 'index'])->name('index');
-        Route::post('/', [SettingController::class, 'siteSettingUpdate'])->name('site-update');
-        Route::get('sms', [SettingController::class, 'smsSetting'])->name('sms');
-        Route::post('sms', [SettingController::class, 'smsSettingUpdate'])->name('sms-update');
-        Route::get('fcm-notification', [SettingController::class, 'fcmSetting'])->name('fcm');
-        Route::post('fcm-notification', [SettingController::class, 'fcmSettingUpdate'])->name('fcm-update');
-        Route::get('email', [SettingController::class, 'emailSetting'])->name('email');
-        Route::post('email', [SettingController::class, 'emailSettingUpdate'])->name('email-update');
-        Route::get('emailtemplate', [SettingController::class, 'emailTemplateSetting'])->name('email-template');
-        Route::post('emailtemplate', [SettingController::class, 'mailTemplateSettingUpdate'])->name('email-template-update');
-        Route::get('homepage', [SettingController::class, 'homepageSetting'])->name('homepage');
-        Route::post('homepage', [SettingController::class, 'homepageSettingUpdate'])->name('homepage-update');
-        Route::get('whatsapp', [SettingController::class, 'whatsappSetting'])->name('whatsapp-message');
-        Route::post('whatsapp', [SettingController::class, 'whatsappSettingupdate'])->name('whatsapp-message-update');
-        Route::get('theme', [SettingController::class, 'themeSetting'])->name('theme');
-        Route::post('theme', [SettingController::class, 'themeSettingUpdate'])->name('theme-update');
-        Route::get('page', [SettingController::class, 'pageSetting'])->name('page');
-        Route::post('page', [SettingController::class, 'pageSettingUpdate'])->name('page-update');
-    });
-
-
-});
-
-
-
-/*Multi step form*/
-
-Route::group(['middleware' => ['installed']], function () {
-    Route::group(['middleware' => ['frontend']], function () {
-        Route::get('/home', [CheckInController::class, 'index'])->name('home');
-        Route::get('/', [CheckInController::class, 'index'])->name('/');
-        Route::get('/scanqr', [CheckInController::class, 'scanQr'])->name('check-in.scan-qr');
-
-        Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-
-        Route::post('/checkout', [CheckoutController::class, 'getVisitor'])->name('checkout.index');
-
-        Route::get('/checkout/update/{visitingDetails}', [CheckoutController::class, 'update'])->name('checkout.update');
-
-        Route::get('/check-in', [CheckInController::class, 'index'])->name('check-in');
-        Route::get('/check-in/create-step-one', [CheckInController::class, 'createStepOne'])->name('check-in.step-one');
-        Route::post('/check-in/create-step-one', [CheckInController::class, 'postCreateStepOne'])->name('check-in.step-one.next');
-        Route::get('/check-in/create-step-two', [CheckInController::class, 'createStepTwo'])->name('check-in.step-two');
-        Route::post('/check-in/create-step-two', [CheckInController::class, 'store'])->name('check-in.step-two.next');
-
-        Route::get('/check-in/show/{id}', [CheckInController::class, 'show'])->name('check-in.show');
-        Route::get('/check-in/return', [CheckInController::class, 'visitor_return'])->name('check-in.return');
-        Route::post('/check-in/return', [CheckInController::class, 'find_visitor'])->name('check-in.find.visitor');
-
-        Route::get('/check-in/pre-registered', [CheckInController::class, 'pre_registered'])->name('check-in.pre.registered');
-        Route::post('/check-in/pre-registered', [CheckInController::class, 'find_pre_visitor'])->name('check-in.find.pre.visitor');
-
-        /**
-         * Scan Qr Code
-         */
-        Route::get('check-in/visitor-details/{visitorPhone}', [CheckInController::class, 'visitorDetails'])->name('checkin.visitor-details');
-        Route::get('check-in/pre-registered/visitor-details/{visitorPhone}', [CheckInController::class, 'preVisitorDetails'])->name('checkin.pre-visitor-details');
-    });
-});
-
-Route::get('visitor/change-status/{status}/{token}',  [FrontendController::class, 'changeStatus']);
-
-Route::get('qrcode/{number}',  [FrontendController::class, 'qrcode'])->name('qrcode');
-Route::get('terms_and_conditions',  [FrontendController::class, 'termsConditions'])->name('terms_and_conditions.view');
