@@ -1,5 +1,5 @@
 services:
-  # PHP Application Service
+  # PHP App service
   app:
     build:
       context: ./
@@ -19,7 +19,7 @@ services:
     networks:
       - VMS_network
 
-  # Web Server (Nginx)
+  #webserver
   webserver:
     image: nginx:latest
     container_name: laravel_webserver
@@ -34,7 +34,7 @@ services:
     networks:
       - VMS_network
 
-  # MySQL Database Service
+  #Databases
   mysql:
     image: mysql:8.0
     container_name: laravel_db
@@ -49,7 +49,7 @@ services:
     networks:
       - VMS_network
 
-  # PHPMyAdmin Service
+  #PHPMyAdmin service
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: laravel_phpmyadmin
